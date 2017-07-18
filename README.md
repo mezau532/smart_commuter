@@ -35,6 +35,6 @@ This app is written with JAVA and XML using Android Studio.
 
 ## User Manual
 
-### References
+## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
 
