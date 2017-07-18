@@ -21,9 +21,9 @@ Although there are a lot of good transportation app out there, but some have too
 
 
 ## Project Structure
-The app will have features 
+The app is splited with few activities
 * Trimet StopId Arrival Time LookUp 
-* Trip Planner (through Trimet, Lyft and Uber)
+* Trip Planner through Lyft and Uber
 * More maybe...
 
 ## Build Instructions
