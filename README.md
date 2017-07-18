@@ -33,6 +33,8 @@ This app is written with JAVA and XML using Android Studio.
          
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
 
-### ReferenceS
+## User Manual
+
+### References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
 
