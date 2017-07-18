@@ -1,5 +1,12 @@
 # smart_commuter
-mobile app that can be used to find public/ride share transportation in the metro area
+Copyright © 2017 {Ulysses Meza, Jinghui Han} This app is under the Apache License, Version 2.0 (the "License"). Please see the file LICENSE in this distribution for license terms.
+
+**Contributor**: Ulysses Meza <br /> Jinghui Han (jinghan@pdx.edu)
+
+##Project Description
+This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
+Our general idea of this app is to provide a friendly and easy use app to users. Easy and friendly outlook, with needed features, allowing users easyly meet their needs while using public transportaion.
+
 ## Week 3 report
 ### What we have been working on
 We have been learning about android/mobile development, since no one on our team has previous experience with it and we have decided
@@ -10,4 +17,8 @@ The main challenges we have run into have been with setting up Visual Studio and
 ### Moving forward
 This week and next week we will focus on getting the backend started (first getting a small POC done at the very least) with the
 logic that we will need.
+
+##Project Structure
+
+
  
