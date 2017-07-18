@@ -1,7 +1,7 @@
 # Smart_Commuter
 Copyright © 2017 Ulysses Meza and Jinghui Han. This app is under the "MIT License". <br /> Please see the file LICENSE in this distribution for license terms.
 
-**Contributor**: Ulysses Meza AND Jinghui Han (jinghan@pdx.edu) <br />
+**Contributor**: Ulysses Meza(umeza@pdx.edu) AND Jinghui Han (jinghan@pdx.edu) <br />
 (Feel free to contact us for anything[like bugs, contributing new features, etc] about this project)
 
 ## Week 3 report
