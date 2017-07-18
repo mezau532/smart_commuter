@@ -16,7 +16,8 @@ logic that we will need.
 
 ## Project Description
 This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-Our general idea of this app is to provide a friendly and easy use app to users. Easy and friendly outlook, with needed features, allowing users easyly meet their needs while using public transportaion.
+Our general idea of this app is to provide a friendly and easy use app to users. Easy and friendly outlook, with needed features, allowing users easyly meet their needs while using public transportaion. <br />
+This app is written in Java and XML. 
 
 ## Project Structure
 The app will have features 
