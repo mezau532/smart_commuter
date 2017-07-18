@@ -1,9 +1,8 @@
 # smart_commuter
 Copyright © 2017 Ulysses Meza and Jinghui Han. This app is under the "MIT License". <br /> Please see the file LICENSE in this distribution for license terms.
 
-This app is written in Java and XML. 
-
-**Contributor**: Ulysses Meza AND Jinghui Han (jinghan@pdx.edu)
+**Contributor**: Ulysses Meza AND Jinghui Han (jinghan@pdx.edu) <br />
+(Feel free to contact us for anything[like bugs, contributing new features, etc] about this project)
 
 ## Week 3 report
 ### What we have been working on
@@ -18,7 +17,7 @@ logic that we will need.
 
 ## Project Description
 This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-Our general idea of this app is to provide a friendly and easy use app to users. Easy and friendly outlook, with needed features, allowing users easyly meet their needs while using public transportaion. <br />
+Although there are a lot of good transportation app out there, but some have too much features which confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app. We only implement needed features; allowing users to see clearly and easyly meet their needs. <br />
 
 
 ## Project Structure
@@ -27,5 +26,14 @@ The app will have features
 * Trip Planner (through Trimet, Lyft and Uber)
 * More maybe...
 
+## Build Instructions
+This app is written with JAVA and XML using Android Studio.
+* Build Prerequisites: Android Studio (You need to have a computer at least.:) XD ) <br />
+* Build: ** Download needed packages when you are in the studio  
+         ** Run the program
+         
+* Download: git clone https://github.com/mezau532/smart_commuter.git  Or Download the zip file from this site.
 
- 
+### Reference
+* The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
+
