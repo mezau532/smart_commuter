@@ -4,7 +4,7 @@ Copyright © 2017 Ulysses Meza and Jinghui Han. This app is under the "MIT Licen
 **Contributor**: Ulysses Meza(umeza@pdx.edu) AND Jinghui Han (jinghan@pdx.edu) <br />
 (Feel free to contact us for anything[like bugs, contributing new features, etc] about this project)
 
-## Week 3 report
+## Week 3 Report
 ### What we have been working on
 We have been learning about android/mobile development, since no one on our team has previous experience with it and we have decided
 on using Xamarin (a Visual studio tool for ios/android/UWP development) we have been experimenting with making simple apps to get an
