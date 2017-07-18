@@ -28,7 +28,7 @@ The app will have features
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
-* Build Prerequisites: Android Studio (You need to have a computer at least.:) XD ) <br />
+* Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
 * Build: Download needed packages when you are in the studio and Run the program
          
 * Download: git clone https://github.com/mezau532/smart_commuter.git  Or Download the zip file from this site.
