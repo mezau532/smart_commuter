@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.david.trimettrack.StopArrivalCheckActivity">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.03">
+
+        <TextView
+            android:id="@+id/StopInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/stopIdInputBox"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="17dp"
+            android:text="Stop ID"
+            android:textColor="#5c4040"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/ArrivalDetailTextBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/StopInfoTitle"
+            android:layout_below="@+id/stopIdInputBox"
+            android:layout_marginTop="13dp"
+            android:text="Stop Information"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/stopIdInputBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/StopInfoTitle"
+            android:ems="10"
+            android:inputType="number"
+            android:text="Stop ID"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/stopIdRefreshButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="14dp"
+            android:text="Refresh"
+            android:onClick="onClick"/>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
+
+</LinearLayout>
