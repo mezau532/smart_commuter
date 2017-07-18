@@ -34,6 +34,7 @@ This app is written with JAVA and XML using Android Studio.
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
 
 ## User Manual
+How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
 *
 
