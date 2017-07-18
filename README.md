@@ -1,4 +1,4 @@
-# smart_commuter
+# Smart_Commuter
 Copyright © 2017 Ulysses Meza and Jinghui Han. This app is under the "MIT License". <br /> Please see the file LICENSE in this distribution for license terms.
 
 **Contributor**: Ulysses Meza AND Jinghui Han (jinghan@pdx.edu) <br />
@@ -9,7 +9,7 @@ Copyright © 2017 Ulysses Meza and Jinghui Han. This app is under the "MIT Licen
 We have been learning about android/mobile development, since no one on our team has previous experience with it and we have decided
 on using Xamarin (a Visual studio tool for ios/android/UWP development) we have been experimenting with making simple apps to get an
 understanding of what is required for the UI and the backend to work. We also spent time designing the project.
-### challenges
+### Challenges
 The main challenges we have run into have been with setting up Visual Studio and just not having experience with android development.
 ### Moving forward
 This week and next week we will focus on getting the backend started (first getting a small POC done at the very least) with the
@@ -31,8 +31,8 @@ This app is written with JAVA and XML using Android Studio.
 * Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
 * Build: Download needed packages when you are in the studio and Run the program
          
-* Download: git clone https://github.com/mezau532/smart_commuter.git  Or Download the zip file from this site.
+* Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
 
-### Reference
+### ReferenceS
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
 
