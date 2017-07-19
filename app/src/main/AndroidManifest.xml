@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.david.trimettrack">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".StopArrivalCheckActivity"
-            android:label="@string/title_activity_stop_arrival_check"></activity>
+            android:label="@string/title_activity_stop_arrival_check" />
+        <activity android:name=".FindRideActivity"></activity>
     </application>
 
 </manifest>
