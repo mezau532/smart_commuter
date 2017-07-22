@@ -3,78 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/08f14e37787e75624a3ae94ba5544495f419394a/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_feb4d62cfee47e275b14ec84889563cb09516f9c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/d6b4bee8d59839c3836d27350596c4a953233796/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_18a42c184a6cc251dc8bec97584f2abf65d19ce5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/8448b3b0cad067ee9b6472477c887571785053e0/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7619d2e7ba9cf9bcf039a1ce86b992d73633dbae/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/0f79d3ec4edb87c5dbe5d69b18fe6bf99ef8bd58/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fd3d36b9ea143d369ea0d26650b6f95b1e73e0ac/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_78fc969914815249803b63a289006cadae814751/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/f9b4dc9f166d4c4a968d97eb3a7ec62b955a3bc6/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2aec5336e1b34eafe4a505a00cd68d4ecee10f70/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/63ddc92be353af48bbc1e88fbed45bd14acfb8b9/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d605ff289aecb76b6192c650bf1f077eb9c153bb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/bb8a7b53701bf11f9c75ce9e79f77bfc1eb6758a/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4579a40be23b68cc1de7614d00b98a01f6673def/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -84,83 +12,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/e7f89d7b4390624146d3532d23d5fb58db8049b4/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c117f2bfd588fe6784ea9952ae73f78e7a3de90e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="023ee503b631f69511e335a061ea008f8da60f40">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_783f45dd1685c68d4b6c53108d958af7df2b538e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/ce64131f7e130dcf73ddb8ad0044fda7c1471549/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_07287ededa914943f773777c30f6c2d5be281026/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/ca31e0b1f0075edb86c64f4de0d81f4cd603e02c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fc91eec49b0c1cbc5d53f2a94f9678cbbb5c9868/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/e27091326052281531e3a96b31b87eb144e504d7/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="952944218ecedea1554a513dec0c14d570642843">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9408cedce62caeec39548492c07adef6bfc21055/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/51986ad2abcf1420a147fef49e1fc41ee32e434c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b110b361e71de73c346162c18ac886c1d792089b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/fa924e67fd20a5077adcb379eb4dec7d2764bf23/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0574a00b09241fd673ac41cc9411bca4aa8a7782/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/umeza/.android/build-cache/b6c19c9a79f6961f6a2977396715080c61b1b589/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="9935891f23923f39d002087085d9696568a9f657">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_49aa621dde465a6f2d9ff421298bd4623ee3e416/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="7e5d0bf00ff12c188ace762a35694d32b4194bad">
+        sha1="6c356e29ce62a4235938d1320f39df462fea49b4">
         <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_4a55ba628a99f0d7753d3aa33143aff3d0860cfc/classes.dex" />
     </item>
 

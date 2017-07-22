@@ -27,7 +27,7 @@ import java.net.URL;
 
 public class HttpHandler {
 
-    private static final String TAG = HttpHandler.class.getSimpleName();
+    public static final String TAG = HttpHandler.class.getSimpleName();
 
     public HttpHandler() {
     }
@@ -47,9 +47,10 @@ public class HttpHandler {
             Log.e(TAG, "ProtocolException: " + e.getMessage());
         } catch (IOException e) {
             Log.e(TAG, "IOException: " + e.getMessage());
-        } catch (Exception e) {
+        } /*catch (Exception e) {
             Log.e(TAG, "Exception: " + e.getMessage());
         }
+        */
         return response;
     }
 

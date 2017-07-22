@@ -65,12 +65,12 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         stop = (EditText) findViewById(R.id.stopIdInputBox);
         stop.setText(stopId);
 
-        String url = "https://developer.trimet.org/ws/V2/arrivals?locIDs="+stopId+"&appID="+appId+"&json=true";
-        HttpHandler http = new HttpHandler();
+     //   String url = "https://developer.trimet.org/ws/V2/arrivals?locIDs="+stopId+"&appID="+appId+"&json=true";
+    /*    HttpHandler http = new HttpHandler();
         String result =  http.makeServiceCall(url);
         stopDetail = (TextView)findViewById(R.id.ArrivalDetailTextBox);
-        stopDetail.setText(result);
-/*
+        stopDetail.setText(result);*/
+
 
         //Send Request to obtain data
         stopDetail  = (TextView)findViewById(R.id.ArrivalDetailTextBox);
@@ -95,7 +95,7 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         // Access the RequestQueue through your singleton class.
         request.add(jsObjRequest);
 
-*/
+
     }
 
     public void onClick(View view){
