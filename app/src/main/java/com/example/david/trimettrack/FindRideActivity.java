@@ -1,6 +1,8 @@
 package com.example.david.trimettrack;
 
+import Sync.GoogleGeocodeSync;
 import Sync.Info.CostEstimateDTO;
+import Sync.Info.LocationDTO;
 import Sync.Info.LyftClientCredentials;
 
 import android.os.AsyncTask;
@@ -33,6 +35,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -58,7 +61,9 @@ public class FindRideActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync();
-        lyftRideInfoSync.execute("");
+        StartAddress = "start";
+        DestinationAddress = "destination";
+//        lyftRideInfoSync.execute(StartAddress, DestinationAddress);
 
         TextView RideOutput;
         HttpHandler httpHandler = new HttpHandler();
@@ -67,6 +72,7 @@ public class FindRideActivity extends AppCompatActivity {
         StartAddress = StartAddressET.getText().toString();
         DestinationAddress = DestinationAddressET.getText().toString();
 
+        lyftRideInfoSync.execute(StartAddress, DestinationAddress);
         //the following code is from Lyft-sdk github:
         RideOutput = (TextView) findViewById(R.id.RideOutputBox);
 
@@ -110,6 +116,11 @@ public class FindRideActivity extends AppCompatActivity {
         protected void onPostExecute(String result){
             TextView RideOutput;
             RideOutput = (TextView) findViewById(R.id.RideOutputBox);
+            if(result == null){
+                RideOutput.setText("please input valid address");
+                return;
+            }
+            //desirializeing json into a class object
             JsonParser parser = new JsonParser();
             JsonObject json = (JsonObject) parser.parse(result);
             JsonElement jsonElement = json.get("cost_estimates");
@@ -127,8 +138,26 @@ public class FindRideActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                String url = "https://api.lyft.com/v1/cost?start_lat=37.7763&start_lng=-122.3918&end_lat=37.7972&end_lng=-122.4533";
+                String startAddress = strings[0];
+                String destinationAddress = strings[1];
+                String startLng = "-122.3918";
+                String startLat = "37.7763";
+                String endLng = "-122.4533";
+                String endLat = "37.7972";
 
+                LocationDTO srt;
+                LocationDTO dest;
+                GoogleGeocodeSync geocoder = new GoogleGeocodeSync();
+                srt = geocoder.getCoordinates(startAddress, GoogleApiKey);
+                dest = geocoder.getCoordinates(destinationAddress, GoogleApiKey);
+
+                if(srt == null || dest == null){
+                    return null;
+                }
+
+                String url = MessageFormat.format(
+                        "https://api.lyft.com/v1/cost?start_lat={0}&start_lng={1}&end_lat={2}&end_lng={3}",
+                        srt.getLat(), srt.getLng(), dest.getLat(), dest.getLng());
                 URL obj = new URL(url);
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -140,6 +169,10 @@ public class FindRideActivity extends AppCompatActivity {
                 con.setRequestProperty("Authorization", "Bearer " + ClientToken);
 
                 int responseCode = con.getResponseCode();
+
+                if(responseCode != 200){
+                    return null;
+                }
                 System.out.println("\nSending 'GET' request to URL : " + url);
                 System.out.println("Response Code : " + responseCode);
 

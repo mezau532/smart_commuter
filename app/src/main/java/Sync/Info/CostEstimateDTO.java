@@ -50,7 +50,7 @@ public class CostEstimateDTO {
     }
 
     public int hashCode(){
-        return (int) this.estimated_cost_cents_max * this.estimated_duration_seconds;
+        return this.estimated_cost_cents_max * this.estimated_duration_seconds;
     }
 
 
@@ -123,7 +123,6 @@ public class CostEstimateDTO {
     public void setCan_request_ride(boolean can_request_ride){
         this.can_request_ride = can_request_ride;
     }
-
     public boolean isCan_request_ride() {
         return this.can_request_ride;
     }
