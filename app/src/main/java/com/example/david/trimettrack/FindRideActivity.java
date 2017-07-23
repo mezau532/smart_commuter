@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class FindRideActivity extends AppCompatActivity {
+    private CheckBox locationCheckbox;
+    private EditText startAdressInput;
     //don't know if I want these private or not?
     //TODO remove this comment once I decide what I want
     //TODO there will be no need for this if i implement location services
@@ -60,6 +63,21 @@ public class FindRideActivity extends AppCompatActivity {
 
     }
 
+    public void onCheckboxClicked(View view){
+        boolean checked = ((CheckBox) view).isChecked();
+        switch (view.getId()){
+            case R.id.LocationCheckBox:
+                if(checked){
+                    startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                    startAdressInput.setText("current location");
+                }
+                else{
+                    startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                    startAdressInput.setText("");
+                }
+        }
+    }
+
     public void onClick(View view) {
         LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync();
         StartAddress = "start";
@@ -73,10 +91,15 @@ public class FindRideActivity extends AppCompatActivity {
         StartAddress = StartAddressET.getText().toString();
         DestinationAddress = DestinationAddressET.getText().toString();
 
+        locationCheckbox = (CheckBox) findViewById(R.id.LocationCheckBox);
+        if(! (locationCheckbox.isChecked())) {
+            StartAddressET.setText("");
+        }
+        DestinationAddressET.setText("");
+
         lyftRideInfoSync.execute(StartAddress, DestinationAddress);
         //the following code is from Lyft-sdk github:
         RideOutput = (TextView) findViewById(R.id.RideOutputBox);
-
 
 
  /*       ApiConfig apiConfig = new ApiConfig.Builder()
