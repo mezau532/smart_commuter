@@ -2,6 +2,7 @@ package com.example.david.trimettrack;
 
 import Sync.GoogleGeocodeSync;
 import Sync.Info.CostEstimateDTO;
+import Sync.Info.ListOfCostEstimateDtos;
 import Sync.Info.LocationDTO;
 import Sync.Info.LyftClientCredentials;
 
@@ -128,13 +129,27 @@ public class FindRideActivity extends AppCompatActivity {
             CostEstimateDTO[] LyftCostEstimates = new GsonBuilder().create().fromJson(jsonString, CostEstimateDTO[].class);
 
             int size = LyftCostEstimates.length;
-            double priceMax = LyftCostEstimates[0].getEstimated_cost_cents_max()/100;
+            ListOfCostEstimateDtos lyftlist = new ListOfCostEstimateDtos();
+            lyftlist.setListOfCostEstimates(LyftCostEstimates);
+            CostEstimateDTO cheapestLyft = lyftlist.getCheapest();
+            if(cheapestLyft == null){
+                RideOutput.setText("Sorry no lyft rides found");
+                return;
+            }
+/*            double priceMax = LyftCostEstimates[0].getEstimated_cost_cents_max()/100;
             RideOutput.setText("ryde_type: " + LyftCostEstimates[0].getRide_type()
+                    + "\nprice max: $" + priceMax
+                    + "\ntotal results: " + size);  */
+            double priceMax = cheapestLyft.getEstimated_cost_cents_max()/100;
+            double priceMin = cheapestLyft.getEstimated_cost_cents_min()/100;
+            RideOutput.setText("ryde_type: " + cheapestLyft.getRide_type()
+                    + "\nprice min: $" + priceMin
                     + "\nprice max: $" + priceMax
                     + "\ntotal results: " + size);
             this.results = "reached results";
 
         }
+
         @Override
         protected String doInBackground(String... strings) {
             try {

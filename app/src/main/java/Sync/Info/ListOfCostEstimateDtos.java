@@ -11,13 +11,44 @@ import java.util.List;
 
 public class ListOfCostEstimateDtos
 {
-    private List<CostEstimateDTO> listOfCostEstimates;
+    private CostEstimateDTO[] listOfCostEstimates;
 
-    public void setListOfCostEstimates(List<CostEstimateDTO> listOfCostEstimates) {
-        Collections.copy(this.listOfCostEstimates, listOfCostEstimates);
+    public ListOfCostEstimateDtos(){
+        this.listOfCostEstimates = null;
     }
 
-    public List<CostEstimateDTO> getListOfCostEstimates() {
+    public void setListOfCostEstimates(CostEstimateDTO[] listOfCostEstimates) {
+        this.listOfCostEstimates = listOfCostEstimates.clone();
+    }
+
+    public CostEstimateDTO getCheapest(){
+        if(this.listOfCostEstimates == null){
+            return null;
+        }
+
+        int size = this.listOfCostEstimates.length;
+        int cheapest = 0;
+        int i = 0;
+        if(size == 0){
+            return null;
+        }
+
+        int current = this.listOfCostEstimates[0].getEstimated_cost_cents_max();
+        int tmp;
+        while(i < size){
+            tmp = this.listOfCostEstimates[i].getEstimated_cost_cents_max();
+            if(tmp < current){
+                current = tmp;
+                cheapest = i;
+            }
+            i++;
+        }
+
+        return this.listOfCostEstimates[cheapest];
+
+    }
+
+    public CostEstimateDTO[] getListOfCostEstimates() {
         return listOfCostEstimates;
     }
 
