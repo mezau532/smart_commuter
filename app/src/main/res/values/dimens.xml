@@ -2,4 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="marginBetweenTextview">3dp</dimen>
+    <dimen name="tableRowLayoutHeight">5dp</dimen>
+    <dimen name="listItemPadding">5dp</dimen>
+    <dimen name="listItemTextPadding">2dp</dimen>
+    <dimen name="horizontalLineHeight">1dip</dimen>
 </resources>

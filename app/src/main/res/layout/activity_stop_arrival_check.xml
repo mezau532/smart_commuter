@@ -11,8 +11,7 @@
     <RelativeLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.03">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/StopInfoTitle"
@@ -29,16 +28,6 @@
             android:padding="10dp"
             android:textAlignment="center"/>
 
-        <TextView
-            android:id="@+id/ArrivalDetailTextBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/StopInfoTitle"
-            android:layout_below="@+id/stopIdInputBox"
-            android:layout_marginTop="13dp"
-            android:text="Stop Information"
-            android:textSize="15sp" />
-
         <EditText
             android:id="@+id/stopIdInputBox"
             android:layout_width="100dp"
@@ -46,6 +35,7 @@
             android:layout_toEndOf="@+id/StopInfoTitle"
             android:ems="10"
             android:inputType="number"
+            android:hint="your Stop ID"
             android:text="Stop ID"
             android:layout_alignParentTop="true" />
 
@@ -57,16 +47,60 @@
             android:layout_alignParentTop="true"
             android:layout_marginEnd="14dp"
             android:text="Refresh"
-            android:onClick="onClick"/>
+            android:onClick="onClick"
+            android:imeOptions="actionDone"/>
 
     </RelativeLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_location"
+            android:id="@+id/currentStopLocation"
+            android:textColor="#3d3837"
+            android:textSize="20sp"
+            android:background="#c7c0c0"/>
+
+
+        <TextView
+            android:id="@+id/currentLocationDir"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#c7c0c0"
+            android:padding="5dp"
+            android:text="@string/current_direction"
+            android:textColor="#3d3837"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/stopInfoListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/noArrivalInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#986c4e"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/errorContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#e7c352"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        tools:ignore="RtlHardcoded" />
+
 
 </LinearLayout>

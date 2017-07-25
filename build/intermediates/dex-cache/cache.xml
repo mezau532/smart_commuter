@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1d8b6ac2c60bce4748df2d0faacb4cf4114f9e88/classes.dex" />
+        <dex dex="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_63dd6988fcdaaedf09ab4da3dd1ea9e97d112923\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="7731f4a608322d27f50aad1ca485d92fb4b06469">
-        <dex dex="/Users/umeza/Documents/repos/smart_commuter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_4a55ba628a99f0d7753d3aa33143aff3d0860cfc/classes.dex" />
+        sha1="51e3c7235be1a252b2242307cee37324271d6b11">
+        <dex dex="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_73684bd66b65a57071a3194aa1f53e22e5be5df5\classes.dex" />
     </item>
 
 </items>

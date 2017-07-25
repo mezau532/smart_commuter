@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/listItemPadding"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/shortStreetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/listItemTextPadding"
+        android:text="@string/StopInfoBoxForStreetText"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:layout_marginTop="@dimen/marginBetweenTextview"/>
+
+    <TextView
+        android:id="@+id/fullStreetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fullstreetname"
+        android:textColor="#beb5a9"
+        android:textSize="12sp"
+        android:padding="@dimen/listItemTextPadding"/>
+
+    <!-- Add a honrizontal line between TextView -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/horizontalLineHeight"
+        android:background="#444" />
+    <!-- Add a honrizontal line between TextView -->
+
+
+    <!-- Full Time Linear Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Inner Scheduled/estimated Time Layout -->
+        <LinearLayout
+            android:id="@+id/innerTimeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/scheduledArrivalTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginBetweenTextview"
+                android:padding="@dimen/listItemTextPadding"
+                android:text="@string/scheduled_arrival_time"
+                android:textColor="#82a778" />
+
+            <!-- Add a honrizontal line between texts -->
+            <View
+                android:layout_width="155dp"
+                android:layout_height="@dimen/horizontalLineHeight"
+                android:background="#444" />
+            <!-- Add a honrizontal line between texts -->
+
+            <TextView
+                android:id="@+id/estimatedArrivalTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginBetweenTextview"
+                android:padding="@dimen/listItemTextPadding"
+                android:text="@string/estimated_arrival_time"
+                android:textColor="#660066" />
+
+        </LinearLayout>
+
+        <!--Inner TimeLeft Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/arrive_in"
+                android:textColor="#1e90ff" />
+
+            <TextView
+                android:id="@+id/TimeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/StopInfoBoxForTimeText"
+                android:textColor="#e5446d"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Add a honrizontal line between texts -->
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/horizontalLineHeight"
+        android:background="#444" />
+    <!-- Add a honrizontal line between texts -->
+
+    <TextView
+        android:id="@+id/detourInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/listItemTextPadding"
+        android:textColor="#eca73e" />
+</LinearLayout>
