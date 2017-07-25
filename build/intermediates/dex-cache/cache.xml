@@ -3,147 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_f1b1fc821a446af2186a22d4274c708c33521233\classes.dex" />
+        <dex dex="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_63dd6988fcdaaedf09ab4da3dd1ea9e97d112923\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\2ac73ad5f5e5c7bdaa74ec51a99f2a499aee01fd\output\jars\classes.jar"
+        jar="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="9935891f23923f39d002087085d9696568a9f657">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0e7c37ec42379fbb1d45eaa9e2d473c09e3cd434\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="023ee503b631f69511e335a061ea008f8da60f40">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-26.0.0-alpha1_3f374600143a859729ea2513568f832eb851f549\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\c9847e58f5ddaf58d37353bcebf7d8180b5d065e\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c8180349e5f7a27d93933b2c8d951983da99f3a4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\a138f4c4c48ff050aea0c3259817826836157e81\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_667c0dabfeb26654ebfa655adc4405e1034b27c0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\ba64eb711c4c0f876efee31323f89671e6e26975\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e97c224228c8c3ddaaeebdaa710e984d14bdb01d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\a6e54147432d62b74e87b5866d6fd2861290ee01\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4a83d338c34cab8810d052f9045af5655956da1e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\423b6b4c477372bdf0dd5c6e6d4ae7ba8c43be8b\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9b86537464292d02e24f130391f5e4cbe14f07c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\4e2c8ab0caff184fa1d923f94fdbb85b971259af\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_51f43b48909128bce3a5f7ee378b51cfb6e0090e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\da55af291524e1a0452529095f9aaf82233b3a00\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="952944218ecedea1554a513dec0c14d570642843">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f03397873e91123e6fbb28fc17ae01ecb6d0960f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\288547cf76845413ec2413823118802e63695365\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8e2525189bf34ec1f2989badd4e8d33306391f1b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\94a87d62c1a7faef3b074774baba2c58b46754ac\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_545f299d16dde3555ae058d4eeb547f9c746d668\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="ddbda34a1f9f3b3c5a70e11dc03b52dba6a40c48">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_03aaf9914539b06ac575e77b5359d6a87e5beba6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\9184d648e822b9a8a9000076a6e42a791ea6cf26\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_808bc8d7a45d8760c36c01c365741d790274987d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\6e18c570cfbcd4502b798cb2e3f186a3c19bc192\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_01db05b2b814d10d79e19c9244ddec03a864a239\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\David\.android\build-cache\0045f60afb2c0b5f6dd061dd79afbad2b139481a\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
-        <dex dex="C:\Users\David\AndroidStudioProjects\TrimetTrack\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_62151a563e28d884964ffa1b61549a98888f9522\classes.dex" />
+        sha1="359c7415abb4ab988bffe8c9aeda4c2a489bd6c4">
+        <dex dex="C:\Users\David\AndroidStudioProjects\smart_commuter\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_73684bd66b65a57071a3194aa1f53e22e5be5df5\classes.dex" />
     </item>
 
 </items>

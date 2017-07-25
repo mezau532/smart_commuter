@@ -1,7 +1,21 @@
 <resources>
     <string name="app_name">TrimetTrack</string>
+
     <string name="title_activity_stop_arrival_check">StopArrivalCheckActivity</string>
+    <string name="current_direction">Current Direction</string>
+    <string name="current_location">Current Location</string>
+    <string name="detour_information">Detour Information</string>
+    <string name="arrive_in">Arrive in:</string>
+    <string name="estimated_arrival_time">Estimated Arrival Time</string>
+    <string name="fullstreetname">FullStreetName</string>
+    <string name="scheduled_arrival_time">Scheduled Arrival Time</string>
+    <string name="StopInfoBoxForStreetText">Street</string>
+    <string name="StopInfoBoxForTimeText">Time</string>
+    <string name="StopInfoBoxForMinsText">mins</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+
 </resources>
