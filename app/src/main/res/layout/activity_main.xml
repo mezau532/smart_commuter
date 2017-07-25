@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.david.trimettrack.MainActivity">
@@ -11,33 +11,43 @@
         android:id="@+id/stopTitleBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="StopId:"
-        android:textSize="25sp"
         android:layout_above="@+id/stopIdSearchButton"
-        android:layout_toStartOf="@+id/stopIdInputBox"
+        android:layout_alignTop="@+id/stopIdInputBox"
         android:layout_marginEnd="21dp"
-        android:layout_alignTop="@+id/stopIdInputBox" />
+        android:layout_toStartOf="@+id/stopIdInputBox"
+        android:text="StopId:"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/stopIdSearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
-        android:text="Search"
-        android:layout_below="@+id/stopIdInputBox"
+        android:layout_above="@+id/RideShareButton"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="132dp"
-        android:onClick="onClick"/>
+        android:layout_marginBottom="89dp"
+        android:layout_marginStart="130dp"
+        android:onClick="onClick"
+        android:text="Search" />
 
     <EditText
         android:id="@+id/stopIdInputBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/stopIdSearchButton"
         android:layout_alignStart="@+id/stopIdSearchButton"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="66dp"
         android:ems="10"
-        android:inputType="number"
-        android:hint="Enter Stop ID here"/>
+        android:hint="Enter Stop ID here"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/RideShareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="175dp"
+        android:onClick="onClick"
+        android:text="Find Ride"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/stopIdSearchButton" />
 
 </RelativeLayout>
