@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="rides-0.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.uber.sdk/rides/0.6.0/eddace06fa2e9327be5f2cd71dcc81e4cc7f2871/rides-0.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.uber.sdk/rides/0.6.0/aec7f12420df2dcc309a7e4b2032f2b9529f8973/rides-0.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
