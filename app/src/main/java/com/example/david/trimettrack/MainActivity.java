@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(view.getId() == R.id.RideShareButton){
             Intent i = new Intent(this, FindRideActivity.class);
+         //   Intent i = new Intent(this, UberLyftListActivity.class);
             startActivity(i);
         }
     }

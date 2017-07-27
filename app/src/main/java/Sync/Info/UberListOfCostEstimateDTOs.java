@@ -11,8 +11,12 @@ public class UberListOfCostEstimateDTOs {
         this.uberlistOfCostEstimates = null;
     }
 
-    public void setUberListOfCostEstimates(UberCostEstimateDTO[] uberListOfCostEstimates) {
-        this.uberlistOfCostEstimates = uberlistOfCostEstimates.clone();
+    public void setUberListOfCostEstimates(UberCostEstimateDTO[] theUberListOfCostEstimates) {
+        if(theUberListOfCostEstimates == null){
+            this.uberlistOfCostEstimates = null;
+        }else {
+            this.uberlistOfCostEstimates = theUberListOfCostEstimates.clone();
+        }
     }
 
     public UberCostEstimateDTO getCheapest(){
@@ -23,15 +27,24 @@ public class UberListOfCostEstimateDTOs {
         int size = this.uberlistOfCostEstimates.length;
         int cheapest = 0;
         int i = 0;
-        if(size == 0){
+        if(size == 0) {
             return null;
         }
-
-        int current = this.uberlistOfCostEstimates[0].getHigh_estimate();
+        int current = 0;
         int tmp;
+        int j = 0;
+        while(j < size){
+            if(this.uberlistOfCostEstimates[j].getHigh_estimate() > 0){
+                current = this.uberlistOfCostEstimates[j].getHigh_estimate();
+            }
+            j++;
+        }
+        if(current == 0){
+            return null;
+        }
         while(i < size){
             tmp = this.uberlistOfCostEstimates[i].getHigh_estimate();
-            if(tmp < current){
+            if(tmp < current && tmp != 0){
                 current = tmp;
                 cheapest = i;
             }

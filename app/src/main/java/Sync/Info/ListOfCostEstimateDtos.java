@@ -22,6 +22,7 @@ public class ListOfCostEstimateDtos
     }
 
     public CostEstimateDTO getCheapest(){
+        /*
         if(this.listOfCostEstimates == null){
             return null;
         }
@@ -38,6 +39,39 @@ public class ListOfCostEstimateDtos
         while(i < size){
             tmp = this.listOfCostEstimates[i].getEstimated_cost_cents_max();
             if(tmp < current){
+                current = tmp;
+                cheapest = i;
+            }
+            i++;
+        }
+
+        return this.listOfCostEstimates[cheapest];
+        */
+        if(this.listOfCostEstimates == null){
+            return null;
+        }
+
+        int size = this.listOfCostEstimates.length;
+        int cheapest = 0;
+        int i = 0;
+        if(size == 0) {
+            return null;
+        }
+        int current = 0;
+        int tmp;
+        int j = 0;
+        while(j < size){
+            if(this.listOfCostEstimates[j].getEstimated_cost_cents_max() > 0){
+                current = this.listOfCostEstimates[j].getEstimated_cost_cents_max();
+            }
+            j++;
+        }
+        if(current == 0){
+            return null;
+        }
+        while(i < size){
+            tmp = this.listOfCostEstimates[i].getEstimated_cost_cents_min();
+            if(tmp < current && tmp != 0){
                 current = tmp;
                 cheapest = i;
             }

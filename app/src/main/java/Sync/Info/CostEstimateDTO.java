@@ -56,6 +56,16 @@ public class CostEstimateDTO {
     }
 
 
+    public String getFormattedCost(){
+        double low = this.estimated_cost_cents_min/100;
+        double high = this.estimated_cost_cents_max/100;
+        return MessageFormat.format("${0}-{1}", low, high);
+    }
+
+    public double getFormattedDuration(){
+        double dur = this.estimated_duration_seconds/60;
+        return dur;
+    }
     public void setRide_type(String ride_type){
         this.ride_type = ride_type;
     }

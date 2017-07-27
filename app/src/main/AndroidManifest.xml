@@ -3,7 +3,7 @@
     package="com.example.david.trimettrack">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,8 @@
         <activity
             android:name=".StopArrivalCheckActivity"
             android:label="@string/title_activity_stop_arrival_check" />
-        <activity android:name=".FindRideActivity"></activity>
+        <activity android:name=".FindRideActivity" />
+        <activity android:name=".UberLyftListActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.david.trimettrack;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -107,7 +108,6 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
     }
 
     private class GetStopInfo extends AsyncTask<String, Void, Void> {
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

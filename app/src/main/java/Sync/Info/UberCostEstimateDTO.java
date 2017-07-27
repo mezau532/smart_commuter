@@ -6,7 +6,7 @@ package Sync.Info;
 
 public class UberCostEstimateDTO {
     String localized_display_name;
-    double distance;
+    float distance;
     String display_name;
     String product_id;
     int high_estimate;
@@ -52,15 +52,19 @@ public class UberCostEstimateDTO {
         this.localized_display_name = localized_display_name;
     }
 
+    public double getFormattedDuration(){
+        double dur = this.duration/60;
+        return dur;
+    }
     public String getLocalized_display_name() {
         return this.localized_display_name;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(float distance) {
         this.distance = distance;
     }
 
-    public double getDistance() {
+    public float getDistance() {
         return this.distance;
     }
 

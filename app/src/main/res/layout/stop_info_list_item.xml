@@ -91,11 +91,11 @@
                 android:id="@+id/TimeLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
                 android:text="@string/StopInfoBoxForTimeText"
                 android:textColor="#e5446d"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="25dp"/>
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>

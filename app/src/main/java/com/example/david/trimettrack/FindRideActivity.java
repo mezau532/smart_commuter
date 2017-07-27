@@ -5,8 +5,14 @@ import Sync.Info.CostEstimateDTO;
 import Sync.Info.ListOfCostEstimateDtos;
 import Sync.Info.LocationDTO;
 import Sync.Info.LyftClientCredentials;
+import Sync.Info.UberCostEstimateDTO;
+import Sync.Info.UberListOfCostEstimateDTOs;
+import Sync.UberSync;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +54,9 @@ public class FindRideActivity extends AppCompatActivity {
     //TODO remove this comment once I decide what I want
     //TODO there will be no need for this if i implement location services
     public static final String TAG = HttpHandler.class.getSimpleName();
+    public UberCostEstimateDTO cheapestUber;
+    CostEstimateDTO cheapestLyft;
+    private String serverToken = "XtW6q7Yu7QSHxAfUhcAQTtbkVemZoHAH7XTeIDqi";
     public String StartAddress;
     public String DestinationAddress;
     public String ClientId = "R7K9RlJA-H87";
@@ -79,7 +88,7 @@ public class FindRideActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync();
+        LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync(this);
         StartAddress = "start";
         DestinationAddress = "destination";
 //        lyftRideInfoSync.execute(StartAddress, DestinationAddress);
@@ -122,6 +131,7 @@ public class FindRideActivity extends AppCompatActivity {
     }
 
     public class LyftRideInfoSync extends AsyncTask<String, Void, String> {
+        private Context context;
         private Exception exeption;
         public String results;
         //TODO at some point I want to take these out of the code
@@ -136,40 +146,87 @@ public class FindRideActivity extends AppCompatActivity {
         public String getResults() {
             return this.results;
         }
+
+        public LyftRideInfoSync(Context context){
+            this.context = context;
+        }
         @Override
         protected void onPostExecute(String result){
+            Intent i = new Intent(context, UberLyftListActivity.class);
             TextView RideOutput;
             RideOutput = (TextView) findViewById(R.id.RideOutputBox);
-            if(result == null){
+            if(result == ""){
                 RideOutput.setText("please input valid address");
                 return;
             }
-            //desirializeing json into a class object
-            JsonParser parser = new JsonParser();
-            JsonObject json = (JsonObject) parser.parse(result);
-            JsonElement jsonElement = json.get("cost_estimates");
-            String jsonString = jsonElement.toString();
-            CostEstimateDTO[] LyftCostEstimates = new GsonBuilder().create().fromJson(jsonString, CostEstimateDTO[].class);
 
-            int size = LyftCostEstimates.length;
-            ListOfCostEstimateDtos lyftlist = new ListOfCostEstimateDtos();
-            lyftlist.setListOfCostEstimates(LyftCostEstimates);
-            CostEstimateDTO cheapestLyft = lyftlist.getCheapest();
-            if(cheapestLyft == null){
+            if(result == null){
                 RideOutput.setText("Sorry no lyft rides found");
-                return;
+                i.putExtra("LyftList", "null");
+                cheapestLyft = null;
             }
+            else {
+                i.putExtra("LyftList", result);
+                //desirializeing json into a class object
+/*                JsonParser jsonParser = new JsonParser();
+                JsonObject json = (JsonObject) jsonParser.parse(result);
+                JsonElement lyftJsonElement = json.get("cost_estimates");
+                String lyftJsonString = lyftJsonElement.toString();
+                CostEstimateDTO[] LyftCostEstimates = new GsonBuilder().create().fromJson(lyftJsonString, CostEstimateDTO[].class);
+
+                int liftListSize = LyftCostEstimates.length;
+                ListOfCostEstimateDtos lyftlist = new ListOfCostEstimateDtos();
+                lyftlist.setListOfCostEstimates(LyftCostEstimates);
+                cheapestLyft = lyftlist.getCheapest();
+                if (cheapestLyft == null) {
+                    RideOutput.setText("Sorry no lyft rides found");
+                } else {
+                    double priceMax = cheapestLyft.getEstimated_cost_cents_max() / 100;
+                    double priceMin = cheapestLyft.getEstimated_cost_cents_min() / 100;
+                    RideOutput.setText("ryde_type: " + cheapestLyft.getRide_type()
+                            + "\nprice min: $" + priceMin
+                            + "\nprice max: $" + priceMax
+                            + "\ntotal results: " + liftListSize);
+                }*/
+            }
+
+            if(this.results == null){
+                cheapestUber = null;
+                i.putExtra("UberList", "null");
+            }
+            else {
+                i.putExtra("UberList", this.results);
+ /*               TextView uberOutput = (TextView) findViewById(R.id.uberTextView);
+                JsonParser parser = new JsonParser();
+                JsonObject jsonObj = (JsonObject) parser.parse(results);
+                JsonElement jsonElement = jsonObj.get("prices");
+                String jsonString = jsonElement.toString();
+                UberCostEstimateDTO[] uberCostEstimates = new GsonBuilder().create().fromJson(jsonString, UberCostEstimateDTO[].class);
+                int size = uberCostEstimates.length;
+                UberListOfCostEstimateDTOs uberList = new UberListOfCostEstimateDTOs();
+                uberList.setUberListOfCostEstimates(uberCostEstimates);
+                cheapestUber = uberList.getCheapest();
+                if (cheapestUber == null) {
+                    uberOutput.setText("sorry no uber");
+                } else {
+                    uberOutput.setText("Type: " + cheapestUber.getDisplay_name()
+                            + "\nHighest: " + cheapestUber.getHigh_estimate()
+                            + "\nLowest: " + cheapestUber.getLow_estimate());
+                }*/
+            }
+   //         Intent i = new Intent(context, UberLyftListActivity.class);
+            startActivity(i);
 /*            double priceMax = LyftCostEstimates[0].getEstimated_cost_cents_max()/100;
             RideOutput.setText("ryde_type: " + LyftCostEstimates[0].getRide_type()
                     + "\nprice max: $" + priceMax
                     + "\ntotal results: " + size);  */
-            double priceMax = cheapestLyft.getEstimated_cost_cents_max()/100;
+ /*           double priceMax = cheapestLyft.getEstimated_cost_cents_max()/100;
             double priceMin = cheapestLyft.getEstimated_cost_cents_min()/100;
             RideOutput.setText("ryde_type: " + cheapestLyft.getRide_type()
                     + "\nprice min: $" + priceMin
                     + "\nprice max: $" + priceMax
                     + "\ntotal results: " + size);
-            this.results = "reached results";
+            this.results = "reached results"; */
 
         }
 
@@ -190,8 +247,56 @@ public class FindRideActivity extends AppCompatActivity {
                 dest = geocoder.getCoordinates(destinationAddress, GoogleApiKey);
 
                 if(srt == null || dest == null){
-                    return null;
+                    return "";
                 }
+
+                String uberUrl = MessageFormat.format(
+                        "https://api.uber.com/v1.2/estimates/price?start_latitude={0}&start_longitude={1}&end_latitude={2}&end_longitude={3}",
+                        srt.getLat(), srt.getLng(), dest.getLat(), dest.getLng());
+                URL Url = new URL(uberUrl);
+                HttpURLConnection connection = (HttpURLConnection) Url.openConnection();
+
+                // optional default is GET
+                connection.setRequestMethod("GET");
+
+                //add request header
+                connection.setRequestProperty("Authorization", "Token " + serverToken);
+                connection.setRequestProperty("Accept-Language", "en_US");
+                connection.setRequestProperty("Content-Type", "application/json");
+
+                int respCode = connection.getResponseCode();
+
+                if(respCode != 200){
+                    this.results = null;
+                }
+                else {
+                    System.out.println("\nSending 'GET' request to URL : " + uberUrl);
+                    System.out.println("Response Code : " + respCode);
+
+                    BufferedReader input = new BufferedReader(
+                            new InputStreamReader(connection.getInputStream()));
+                    String inLine;
+                    StringBuffer resp = new StringBuffer();
+                    while ((inLine = input.readLine()) != null) {
+                        resp.append(inLine);
+                    }
+                    input.close();
+
+                    //print result
+                    System.out.println(resp.toString());
+//                this.results = response.toString();
+                    this.results = resp.toString();
+                }
+
+ /*               UberSync uberClient = new UberSync();
+                UberListOfCostEstimateDTOs tmpUberList = new UberListOfCostEstimateDTOs();
+                if(uberClient.getCostEstimates(srt.getLat(), srt.getLng(), dest.getLng(), dest.getLat()) == null){
+                    cheapestUber = null;
+                }
+                else {
+                    tmpUberList.setUberListOfCostEstimates(uberClient.getCostEstimates(srt.getLat(), srt.getLng(), dest.getLng(), dest.getLat()));
+                    cheapestUber = tmpUberList.getCheapest();
+                }*/
 
                 String url = MessageFormat.format(
                         "https://api.lyft.com/v1/cost?start_lat={0}&start_lng={1}&end_lat={2}&end_lng={3}",
@@ -203,7 +308,6 @@ public class FindRideActivity extends AppCompatActivity {
                 con.setRequestMethod("GET");
 
                 //add request header
-//        con.setRequestProperty("User-Agent", USER_AGENT);
                 con.setRequestProperty("Authorization", "Bearer " + ClientToken);
 
                 int responseCode = con.getResponseCode();
@@ -218,11 +322,10 @@ public class FindRideActivity extends AppCompatActivity {
                         new InputStreamReader(con.getInputStream()));
                 String inputLine;
                 StringBuffer response = new StringBuffer();
-                this.results = response.toString();
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
                 }
-//            in.close();
+                in.close();
 
                 //print result
                 System.out.println(response.toString());
