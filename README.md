@@ -18,7 +18,7 @@ logic that we will need.
 
 ## Project Description
 This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-Although there are a lot of good transportation app out there, but some have too much features which confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app. We only implement needed features; allowing users to see clearly and easyly meet their needs. <br />
+Although there are a lot of good transportation app out there, but some have too much features which confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app. We will implement needed features; allowing users to easyly meet their needs. <br />
 
 
 ## Project Structure
