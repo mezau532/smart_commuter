@@ -24,7 +24,7 @@ Although there are a lot of good transportation app out there, but some have too
 ## Project Structure
 The app is splited with few activities
 * Trimet StopId Arrival Time LookUp 
-* Trip Planner through Lyft and Uber
+* Price lookup through Lyft and Uber
 * More maybe...
 
 ## Build Instructions
@@ -38,7 +38,7 @@ This app is written with JAVA and XML using Android Studio.
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
-*
+* Find Ride: Enter address to check price to your destination.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
