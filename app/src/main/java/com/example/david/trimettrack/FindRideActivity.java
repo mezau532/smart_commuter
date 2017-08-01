@@ -147,8 +147,8 @@ public class FindRideActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.LocationCheckBox:
                 if(checked){
-                    startAdressInput = (EditText) findViewById(R.id.StartInputBox);
-                    startAdressInput.setText(MessageFormat.format("lat: {0} lng:{1}", lat, lng));
+                      geocodeAddress geocode = new geocodeAddress(this);
+                      geocode.execute(lat, lng);
                 }
                 else{
                     startAdressInput = (EditText) findViewById(R.id.StartInputBox);
@@ -181,23 +181,30 @@ public class FindRideActivity extends AppCompatActivity {
         RideOutput = (TextView) findViewById(R.id.RideOutputBox);
 
 
- /*       ApiConfig apiConfig = new ApiConfig.Builder()
-                .setClientId(ClientId)
-                .setClientToken(ClientToken)
-                .build();
+    }
+    public class geocodeAddress extends AsyncTask<Double, Void, String> {
+        private Context context;
+        public geocodeAddress(Context context){
+            this.context = context;
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            if(s != null) {
+                startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                startAdressInput.setText(s);
+            }
+            else{
+                startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                startAdressInput.setText("Current Location Not found sorry");
+            }
+        }
 
-        LyftButton lyftButton = (LyftButton) findViewById(R.id.lyft_button);
-        lyftButton.setApiConfig(apiConfig);
-
-        RideParams.Builder rideParamsBuilder = new RideParams.Builder()
-                .setPickupAddress(StartAddress)
-                .setDropoffAddress(DestinationAddress);
-        //RideTypeEnum can be set to type of uber you want
-        rideParamsBuilder.setRideTypeEnum(RideTypeEnum.CLASSIC);
-
-        lyftButton.setRideParams(rideParamsBuilder.build());
-        lyftButton.load();     */
-
+        @Override
+        protected String doInBackground(Double... doubles) {
+            GoogleGeocodeSync geocoder = new GoogleGeocodeSync();
+            String address = geocoder.getAddress(doubles[0], doubles[1], GoogleApiKey);
+            return address;
+        }
     }
 
     public class LyftRideInfoSync extends AsyncTask<String, Void, String> {
@@ -238,26 +245,6 @@ public class FindRideActivity extends AppCompatActivity {
             else {
                 i.putExtra("LyftList", result);
                 //desirializeing json into a class object
-/*                JsonParser jsonParser = new JsonParser();
-                JsonObject json = (JsonObject) jsonParser.parse(result);
-                JsonElement lyftJsonElement = json.get("cost_estimates");
-                String lyftJsonString = lyftJsonElement.toString();
-                CostEstimateDTO[] LyftCostEstimates = new GsonBuilder().create().fromJson(lyftJsonString, CostEstimateDTO[].class);
-
-                int liftListSize = LyftCostEstimates.length;
-                ListOfCostEstimateDtos lyftlist = new ListOfCostEstimateDtos();
-                lyftlist.setListOfCostEstimates(LyftCostEstimates);
-                cheapestLyft = lyftlist.getCheapest();
-                if (cheapestLyft == null) {
-                    RideOutput.setText("Sorry no lyft rides found");
-                } else {
-                    double priceMax = cheapestLyft.getEstimated_cost_cents_max() / 100;
-                    double priceMin = cheapestLyft.getEstimated_cost_cents_min() / 100;
-                    RideOutput.setText("ryde_type: " + cheapestLyft.getRide_type()
-                            + "\nprice min: $" + priceMin
-                            + "\nprice max: $" + priceMax
-                            + "\ntotal results: " + liftListSize);
-                }*/
             }
 
             if(this.results == null){
@@ -266,37 +253,8 @@ public class FindRideActivity extends AppCompatActivity {
             }
             else {
                 i.putExtra("UberList", this.results);
- /*               TextView uberOutput = (TextView) findViewById(R.id.uberTextView);
-                JsonParser parser = new JsonParser();
-                JsonObject jsonObj = (JsonObject) parser.parse(results);
-                JsonElement jsonElement = jsonObj.get("prices");
-                String jsonString = jsonElement.toString();
-                UberCostEstimateDTO[] uberCostEstimates = new GsonBuilder().create().fromJson(jsonString, UberCostEstimateDTO[].class);
-                int size = uberCostEstimates.length;
-                UberListOfCostEstimateDTOs uberList = new UberListOfCostEstimateDTOs();
-                uberList.setUberListOfCostEstimates(uberCostEstimates);
-                cheapestUber = uberList.getCheapest();
-                if (cheapestUber == null) {
-                    uberOutput.setText("sorry no uber");
-                } else {
-                    uberOutput.setText("Type: " + cheapestUber.getDisplay_name()
-                            + "\nHighest: " + cheapestUber.getHigh_estimate()
-                            + "\nLowest: " + cheapestUber.getLow_estimate());
-                }*/
             }
-   //         Intent i = new Intent(context, UberLyftListActivity.class);
             startActivity(i);
-/*            double priceMax = LyftCostEstimates[0].getEstimated_cost_cents_max()/100;
-            RideOutput.setText("ryde_type: " + LyftCostEstimates[0].getRide_type()
-                    + "\nprice max: $" + priceMax
-                    + "\ntotal results: " + size);  */
- /*           double priceMax = cheapestLyft.getEstimated_cost_cents_max()/100;
-            double priceMin = cheapestLyft.getEstimated_cost_cents_min()/100;
-            RideOutput.setText("ryde_type: " + cheapestLyft.getRide_type()
-                    + "\nprice min: $" + priceMin
-                    + "\nprice max: $" + priceMax
-                    + "\ntotal results: " + size);
-            this.results = "reached results"; */
 
         }
 
@@ -354,19 +312,9 @@ public class FindRideActivity extends AppCompatActivity {
 
                     //print result
                     System.out.println(resp.toString());
-//                this.results = response.toString();
                     this.results = resp.toString();
                 }
 
- /*               UberSync uberClient = new UberSync();
-                UberListOfCostEstimateDTOs tmpUberList = new UberListOfCostEstimateDTOs();
-                if(uberClient.getCostEstimates(srt.getLat(), srt.getLng(), dest.getLng(), dest.getLat()) == null){
-                    cheapestUber = null;
-                }
-                else {
-                    tmpUberList.setUberListOfCostEstimates(uberClient.getCostEstimates(srt.getLat(), srt.getLng(), dest.getLng(), dest.getLat()));
-                    cheapestUber = tmpUberList.getCheapest();
-                }*/
 
                 String url = MessageFormat.format(
                         "https://api.lyft.com/v1/cost?start_lat={0}&start_lng={1}&end_lat={2}&end_lng={3}",
