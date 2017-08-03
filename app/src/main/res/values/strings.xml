@@ -1,7 +1,17 @@
 <resources>
-    <string name="app_name">TrimetTrack</string>
+    <string name="app_name">Smart Commuter</string>
+    <string name="title_activity_stop_arrival_check">Arrival</string>
+    <string name="title_activity_find_ride">Find Ride</string>
+    <string name="title_activity_ride_list_view">Result</string>
 
-    <string name="title_activity_stop_arrival_check">StopArrivalCheckActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="trimetApiKey">1D72A2E7E55A71C6646AD061E</string>
+
+
+    <string name="enter_stop_id_here">Enter Stop ID here</string>
     <string name="current_direction">Current Direction</string>
     <string name="current_location">Current Location</string>
     <string name="detour_information">Detour Information</string>
@@ -12,10 +22,15 @@
     <string name="StopInfoBoxForStreetText">Street</string>
     <string name="StopInfoBoxForTimeText">Time</string>
     <string name="StopInfoBoxForMinsText">mins</string>
-
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="refreshButton">Refresh</string>
+    <string name="stopArrivalSearchButton">Search</string>
+    <string name="FindRideButton">Find Ride</string>
+    <string name="trimet_arrival_information_title">Stop Arrivals Information:</string>
+    <string name="find_Ride_title">Find Ride Information:</string>
+    <string name="stop_nearby_checkbox_description">* Search nearby stops</string>
+    <string name="trimet_logo_imageVide_description">Trimet Logo</string>
+    <string name="lyft_and_uber_imageview_description">lyft and uber logo</string>
 
 
 </resources>
+

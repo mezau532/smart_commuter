@@ -1,53 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.david.trimettrack.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.example.david.trimettrack.MainActivity"
+    android:weightSum="1">
 
 
-    <TextView
-        android:id="@+id/stopTitleBox"
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/logo_trimet"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/stopIdSearchButton"
-        android:layout_alignTop="@+id/stopIdInputBox"
-        android:layout_marginEnd="21dp"
-        android:layout_toStartOf="@+id/stopIdInputBox"
-        android:text="StopId:"
-        android:textSize="25sp" />
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:padding="20dp"
+        app:srcCompat="@drawable/logo_trimet"
+        android:contentDescription="@string/trimet_logo_imageVide_description" />
 
-    <Button
-        android:id="@+id/stopIdSearchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/RideShareButton"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="89dp"
-        android:layout_marginStart="130dp"
-        android:onClick="onClick"
-        android:text="Search" />
 
-    <EditText
-        android:id="@+id/stopIdInputBox"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/stopIdSearchButton"
-        android:layout_alignStart="@+id/stopIdSearchButton"
-        android:layout_marginBottom="66dp"
-        android:ems="10"
-        android:hint="Enter Stop ID here"
-        android:inputType="number" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/stopIdInputBox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:hint="@string/enter_stop_id_here"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:padding="@dimen/stopIdInputBoxPadding"
+                android:background="@drawable/round_shape_button"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/stopIdSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="onClick"
+                android:text="@string/stopArrivalSearchButton" />
+
+            <CheckBox
+                android:id="@+id/searchNearbyStopsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/stop_nearby_checkbox_description"
+                android:onClick="onCheckboxClicked"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Add a honrizontal line between TextView -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="#d8e5cf" />
+    <!-- Add a honrizontal line between TextView -->
+
+    <ImageView
+        android:id="@+id/logo_lyft_uber"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:scaleType="centerCrop"
+        android:padding="90dp"
+        app:srcCompat="@drawable/logo_lyft_uber"
+        android:contentDescription="@string/lyft_and_uber_imageview_description" />
 
     <Button
         android:id="@+id/RideShareButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="175dp"
         android:onClick="onClick"
-        android:text="Find Ride"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/stopIdSearchButton" />
+        android:text="@string/FindRideButton"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -7,4 +7,8 @@
     <dimen name="listItemPadding">5dp</dimen>
     <dimen name="listItemTextPadding">2dp</dimen>
     <dimen name="horizontalLineHeight">1dip</dimen>
+    <dimen name="stopIdInputBoxMarginLeft">50dp</dimen>
+    <dimen name="noArrivalInfoMarginTop">10dp</dimen>
+    <dimen name="stopIdInputBoxPadding">8dp</dimen>
+
 </resources>

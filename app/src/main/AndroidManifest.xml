@@ -23,8 +23,18 @@
         <activity
             android:name=".StopArrivalCheckActivity"
             android:label="@string/title_activity_stop_arrival_check" />
-        <activity android:name=".FindRideActivity" />
-        <activity android:name=".UberLyftListActivity"></activity>
+        <activity
+            android:name=".FindRideActivity"
+            android:label="@string/title_activity_find_ride" />
+        <activity
+            android:name=".UberLyftListActivity"
+            android:label="@string/title_activity_ride_list_view" />
+
+        <meta-data
+            android:name="trimetAppID"
+            android:value="@string/trimetApiKey" />
+
+        <activity android:name=".StopNearbyCheckActivity"></activity>
     </application>
 
 </manifest>
