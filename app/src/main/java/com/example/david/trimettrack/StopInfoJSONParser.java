@@ -25,14 +25,25 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class StopInfoJSONParser {
 
     private String TAG = "StopInfo_JSON_Parser";
+
+    //Variables
     private String curLocation = null;
     private String direction = null ;
     private String errorContent = null;
     private String arrivalInfo = null;
-
-
     ArrayList<HashMap<String,String>> stopInfoList;
 
+    //Constructor
+    public StopInfoJSONParser(String url) {
+        stopInfoList = new ArrayList<>();
+        try {
+            getStopInfoResult(url);
+        } catch (Exception e) {
+            Log.e(TAG, "Json parsing error: " + e.getMessage());
+        }
+    }
+
+    //Default Methods
     public String getCurLocation() {
         return curLocation;
     }
@@ -74,23 +85,23 @@ public class StopInfoJSONParser {
         this.stopInfoList = stopInfoList;
     }
 
-    public StopInfoJSONParser() {
-        stopInfoList = new ArrayList<>();
-    }
 
+    //Get JSON response and parse result method
     public void getStopInfoResult(String url) throws Exception {
 
         String TimeLeft;
         String detourInfo;
 
-        HttpHandler sh = new HttpHandler();
-        // Making a request to url and getting response
-        String jsonStr = sh.makeServiceCall(url);
-
+        // Make a request to the URL and get response from it
+        HttpHandler request = new HttpHandler();
+        String jsonStr = request.makeServiceCall(url);
 
         Log.e(TAG, "Response from url: " + jsonStr);
 
+        //Check response content whether is empty
         if (jsonStr != null) {
+
+            //If it is no empty, start parse the JSON response
             try {
                 JSONObject jsonObj = new JSONObject(jsonStr);
                 JSONObject resultSet = jsonObj.getJSONObject("resultSet");
@@ -195,7 +206,8 @@ public class StopInfoJSONParser {
             Log.e(TAG, "Couldn't get json from server.");}
     }
 
-        //Methods for time format
+
+    //Method, calculate when the bus/max arrive in minute format
     private String MillisecondToTimeLeftFormat(String millisecond){
         long currentTime = System.currentTimeMillis();
         long result = Long.valueOf(millisecond) - currentTime;
@@ -206,6 +218,7 @@ public class StopInfoJSONParser {
         }
     }
 
+    //Method, transform millisecond to date format
     private String MillisecondToTimeFormat(String millisecond){
 
         //Change Millisecond to hh:mm am/pm format
