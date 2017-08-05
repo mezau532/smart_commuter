@@ -17,8 +17,7 @@ This week and next week we will focus on getting the backend started (first gett
 logic that we will need.
 
 ## Project Description
-This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-We know that there are a lot of good transportation apps out there, but some have too much features which would maybe confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app with only needed features, so allowing users to easily meet their needs upon using public transportatoin in the metro area. <br />
+This is a mobile app that can be used to find public/ride share transportation in the metro area. We know that there are a lot of good transportation apps out there, but some have too much features which would maybe confuse users. Hence, our general idea behind this app is to provide user a friendly and easy use app with only needed features, so allowing users to easily meet their needs upon using public transportatoin in the metro area. <br />
 
 
 ## Project Structure
@@ -39,6 +38,7 @@ This app is written with JAVA and XML using Android Studio.
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
 * Find Ride: Enter address to check price to your destination.
+* Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
