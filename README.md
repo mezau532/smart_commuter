@@ -24,7 +24,7 @@ This is a mobile app that can be used to find public/ride share transportation i
 The app is splited with few activities
 * Trimet StopId Arrival Time LookUp 
 * Price lookup through Lyft and Uber
-* More maybe...
+* Check nearby stops upon a current location coordinate
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
