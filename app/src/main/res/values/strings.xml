@@ -3,6 +3,7 @@
     <string name="title_activity_stop_arrival_check">Arrival</string>
     <string name="title_activity_find_ride">Find Ride</string>
     <string name="title_activity_ride_list_view">Result</string>
+    <string name="title_activity_nearby_stop">Nearby Stop</string>
 
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -30,6 +31,11 @@
     <string name="stop_nearby_checkbox_description">* Search nearby stops</string>
     <string name="trimet_logo_imageVide_description">Trimet Logo</string>
     <string name="lyft_and_uber_imageview_description">lyft and uber logo</string>
+    <string name="stop_id_textView">Stop ID</string>
+    <string name="distance_textView">Distance</string>
+    <string name="duration_textView">Duration</string>
+    <string name="sign_textView">Sign</string>
+    <string name="nearby_stop_guide_textView">Found Stops (Range 0.5mi) :</string>
 
 
 </resources>

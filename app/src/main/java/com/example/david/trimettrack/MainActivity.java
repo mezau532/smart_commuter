@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity { //implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     protected EditText stopIdInput;
 
@@ -30,18 +30,6 @@ public class MainActivity extends AppCompatActivity { //implements View.OnClickL
                         Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET},10);
             }
         }
-
-        //Old codes -- replaced by above code (can be removed)
-        /**
-        //this code is to handle both buttons on main page
-        //got it from stack overflow: https://stackoverflow.com/questions/16265883/how-to-create-multiple-onclick-methods-in-android
-        //stopIdSearchButton.setOnClickListener(this);
-
-        //button2 = (Button) findViewById(R.id.RideShareButton);
-        // button2.setOnClickListener(this);
-         */
-
-
     }
 
     public void onClick(View view) {
@@ -63,7 +51,7 @@ public class MainActivity extends AppCompatActivity { //implements View.OnClickL
                     String longitude = location.getLongitude();
 
                     //Goto Check_Nearby_Stops_Activity
-                    i = new Intent(this, StopNearbyCheckActivity.class);
+                    i = new Intent(this, NearbyStopCheckActivity.class);
                     i.putExtra("current_latitude",latitude);
                     i.putExtra("current_longitude",longitude);
                     startActivity(i);
@@ -90,21 +78,6 @@ public class MainActivity extends AppCompatActivity { //implements View.OnClickL
 
         }
 
-        //Old codes -- replaced by above code (can be removed)
-        /**
-        if(view.getId() == R.id.stopIdSearchButton) {
-            Intent i = new Intent(this, StopArrivalCheckActivity.class);
-            stopIdInput = (EditText) findViewById(R.id.stopIdInputBox);
-            String stopId = stopIdInput.getText().toString();
-            i.putExtra("stopIdInput", stopId);
-            startActivity(i);
-        }
-        else if(view.getId() == R.id.RideShareButton){
-            Intent i = new Intent(this, FindRideActivity.class);
-         //   Intent i = new Intent(this, UberLyftListActivity.class);
-            startActivity(i);
-        }
-         */
     }
 
     public void onCheckboxClicked(View view){

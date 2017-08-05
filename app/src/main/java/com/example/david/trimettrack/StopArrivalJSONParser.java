@@ -1,13 +1,13 @@
 package com.example.david.trimettrack;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,7 +22,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 //Code based on https://www.androidhive.info/2012/01/android-json-parsing-tutorial/ by RAVI TAMADA
 
-public class StopInfoJSONParser {
+public class StopArrivalJSONParser {
 
     private String TAG = "StopInfo_JSON_Parser";
 
@@ -30,12 +30,12 @@ public class StopInfoJSONParser {
     private String curLocation = null;
     private String direction = null ;
     private String errorContent = null;
-    private String arrivalInfo = null;
-    ArrayList<HashMap<String,String>> stopInfoList;
+    private String noArrivalInfo = null;
+    private ArrayList<HashMap<String,String>> stopInfoResultList;
 
     //Constructor
-    public StopInfoJSONParser(String url) {
-        stopInfoList = new ArrayList<>();
+    public StopArrivalJSONParser(String url) {
+        stopInfoResultList = new ArrayList<>();
         try {
             getStopInfoResult(url);
         } catch (Exception e) {
@@ -68,29 +68,26 @@ public class StopInfoJSONParser {
         this.errorContent = errorContent;
     }
 
-    public String getArrivalInfo() {
-        return arrivalInfo;
+    public String getNoArrivalInfo() {
+        return noArrivalInfo;
     }
 
-    public void setArrivalInfo(String arrivalInfo) {
-        this.arrivalInfo = arrivalInfo;
+    public void setNoArrivalInfo(String noArrivalInfo) {
+        this.noArrivalInfo = noArrivalInfo;
     }
 
 
-    public ArrayList<HashMap<String, String>> getStopInfoList() {
-        return stopInfoList;
+    public ArrayList<HashMap<String, String>> getStopInfoResultList() {
+        return stopInfoResultList;
     }
 
-    public void setStopInfoList(ArrayList<HashMap<String, String>> stopInfoList) {
-        this.stopInfoList = stopInfoList;
+    public void setStopInfoResultList(ArrayList<HashMap<String, String>> stopInfoResultList) {
+        this.stopInfoResultList = stopInfoResultList;
     }
 
 
     //Get JSON response and parse result method
     public void getStopInfoResult(String url) throws Exception {
-
-        String TimeLeft;
-        String detourInfo;
 
         // Make a request to the URL and get response from it
         HttpHandler request = new HttpHandler();
@@ -111,8 +108,7 @@ public class StopInfoJSONParser {
                     errorContent = error.getString("content");
                 } else {
 
-                    HashMap<String, String> detourInfoList;
-                    detourInfoList = new HashMap<>();
+                    HashMap<String, String> detourInfoList = new HashMap<>();
                     if (resultSet.has("detour")) {
 
                         JSONArray detour = resultSet.getJSONArray("detour");
@@ -130,7 +126,7 @@ public class StopInfoJSONParser {
                     JSONArray loc = resultSet.getJSONArray("location");
                     JSONObject temp = loc.getJSONObject(0);
                     curLocation = temp.getString("desc");
-                    direction = "(" + temp.getString("dir") + ")";
+                    direction = MessageFormat.format("({0})",temp.getString("dir"));
 
                     //Get Arrival Time Detail
                     //Arrival is an JSON Array Node
@@ -152,30 +148,35 @@ public class StopInfoJSONParser {
                             String scheduledTime = a.getString("scheduled");
 
                             //Get estimated Time
+                            String timeLeft;
                             String estimatedTime;
                             if (a.has("estimated")) {
                                 estimatedTime = a.getString("estimated");
 
                                 //Time Remaining
-                                TimeLeft = MillisecondToTimeLeftFormat(estimatedTime) + " mins";
+                                timeLeft = MillisecondToTimeLeftFormat(estimatedTime);
 
                                 estimatedTime = MillisecondToTimeFormat(estimatedTime);
 
                             } else {
                                 estimatedTime = "None";
-                                TimeLeft = "-";
+                                timeLeft = "-";
                             }
 
+                            String detourInfo;
                             if (a.has("detour")) {
-                                StringBuilder strBuilder = new StringBuilder();
+                                //Get detour Information
                                 JSONArray tmpDetour = a.getJSONArray("detour");
+
+                                //Combine detour information into one string
+                                StringBuilder strBuilder = new StringBuilder();
                                 String[] detourDetail = new String[tmpDetour.length()];
                                 for (int n = 0; n < tmpDetour.length(); n++) {
                                     detourDetail[n] = detourInfoList.get(tmpDetour.getString(n));
                                     strBuilder.append("Detour: " + detourDetail[n] + "\n");
                                 }
-
                                 detourInfo = strBuilder.toString().trim();
+
                             } else {
                                 detourInfo = "No Detour Information";
                             }
@@ -187,34 +188,35 @@ public class StopInfoJSONParser {
                             stopInfo.put("scheduledArrivalTime", "Scheduled: " + MillisecondToTimeFormat(scheduledTime));
                             stopInfo.put("estimatedArrivalTime", "Estimated: " + estimatedTime);
                             stopInfo.put("fullStreetName", "(" + fullSign + ")");
-                            stopInfo.put("RemainingTime", TimeLeft);
+                            stopInfo.put("RemainingTime", timeLeft);
                             stopInfo.put("detourInfo", detourInfo);
 
                             // adding contact to contact list
-                            stopInfoList.add(stopInfo);
+                            stopInfoResultList.add(stopInfo);
                         }
                     } else {
-                        arrivalInfo = "No Arrivals Found!!!";
+                        noArrivalInfo = "No Arrivals Found!!!";
                     }
                 }
-
             } catch (final JSONException e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
 
         } else {
-            Log.e(TAG, "Couldn't get json from server.");}
+            Log.e(TAG, "Couldn't get json from server.");
+        }
     }
 
 
     //Method, calculate when the bus/max arrive in minute format
     private String MillisecondToTimeLeftFormat(String millisecond){
         long currentTime = System.currentTimeMillis();
-        long result = Long.valueOf(millisecond) - currentTime;
-        if (result == 0)
+        long result = MILLISECONDS.toMinutes(Long.valueOf(millisecond) - currentTime);
+        if (result == 0) {
             return "Due Now";
+        }
         else {
-            return String.valueOf(MILLISECONDS.toMinutes(result));
+            return String.valueOf(result) + " mins";
         }
     }
 

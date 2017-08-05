@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.david.trimettrack.StopNearbyCheckActivity">
+    tools:context="com.example.david.trimettrack.NearbyStopCheckActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="45dp" />
+        android:padding="10dp"
+        android:text="@string/nearby_stop_guide_textView"
+        android:textStyle="italic"
+        android:textSize="15sp"
+        android:background="#c7c0c0"/>
+
+    <ListView
+        android:id="@+id/nearbyStopListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

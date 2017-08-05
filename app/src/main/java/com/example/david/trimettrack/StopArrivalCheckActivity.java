@@ -29,25 +29,25 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
     private String url;
 
     //JSON Parser Variable
-    protected StopInfoJSONParser arrivalsResult;
+    protected StopArrivalJSONParser arrivalsResult;
 
     //List of Stop Information
     protected ListView lv;
     protected ListAdapter adapter;
-    ArrayList<HashMap<String, String>> stopInfoList;
+    ArrayList<HashMap<String, String>> stopInfoResultList;
 
     //Obtain Current stop ID
-    protected EditText currentStopId;
+    protected EditText stopIDEditText;
 
     //Variables
-    protected TextView currentDir;
-    protected TextView currentLoc;
-    protected TextView errorTextBox;
-    protected TextView noArrivalInfo;
+    protected TextView currentDirTextView;
+    protected TextView currentLocTextView;
+    protected TextView errorTextView;
+    protected TextView noArrivalInfoTextView;
     protected String curLocation;
     protected String direction;
     protected String errorContent;
-    protected String arrivalInfo;
+    protected String noArrivalInfo;
 
 
     @Override
@@ -65,40 +65,42 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
             Log.e(TAG, "You need to configure the meta-data first.");
         }
 
+        //Initialize a new Array List to store arrival information for a specific stop ID
+        stopInfoResultList = new ArrayList<>();
+
+        //Find listView box in which it is going to display arrival information
+        lv = (ListView) findViewById(R.id.stopInfoListView);
 
         //Get data that is being passed from Main Activity
         Bundle stopData = getIntent().getExtras();
         if (stopData == null)
             return;
         stopId = stopData.getString("stopIdInput");
-        currentStopId = (EditText) findViewById(R.id.stopIdInputBox);
-        currentStopId.setText(stopId);
-        //Define the URL that going to be retrieve data from
-        url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
-                                    stopId,appId);
+        if(stopId.length() > 0){
+            stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
+            stopIDEditText.setText(stopId);
+            //Define the URL that going to be retrieve data from
+            url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
+                    stopId,appId);
 
-        //Initialize a new Array List to store arrival information for a specific stop ID
-        stopInfoList = new ArrayList<>();
-
-        //Find listView box in which it is going to display arrival information
-        lv = (ListView) findViewById(R.id.stopInfoListView);
-
-        //Get the result and set content to ListView
-        new GetStopInfo().execute(url);
-
+            //Get the result and set content to ListView
+            new GetStopInfo().execute(url);
+        }
+        else
+            Toast.makeText(StopArrivalCheckActivity.this,"Enter Stop ID to see Arrival Information !!!", Toast.LENGTH_LONG).show();
     }
 
     public void onClick(View view) {
         hideKeyboard(view);
 
         //Define URL and the request data
-        currentStopId = (EditText) findViewById(R.id.stopIdInputBox);
-        stopId = currentStopId.getText().toString();
+        stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
+        stopId = stopIDEditText.getText().toString();
         url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
-                                    stopId,appId);
+                stopId,appId);
 
         //Clean the list before receive new information
-        stopInfoList.clear();
+        stopInfoResultList.clear();
 
         //Call method to retrieve a stop Arrivals result
         new GetStopInfo().execute(url);
@@ -123,12 +125,12 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
 
             try {
                 //Parse the JSON response into Android Version
-                arrivalsResult = new StopInfoJSONParser(link);
-                stopInfoList = arrivalsResult.getStopInfoList();
+                arrivalsResult = new StopArrivalJSONParser(link);
+                stopInfoResultList = arrivalsResult.getStopInfoResultList();
                 curLocation = arrivalsResult.getCurLocation();
                 direction = arrivalsResult.getDirection();
                 errorContent = arrivalsResult.getErrorContent();
-                arrivalInfo = arrivalsResult.getArrivalInfo();
+                noArrivalInfo = arrivalsResult.getNoArrivalInfo();
 
             } catch (Exception e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -150,24 +152,24 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
 
             //Display arrival information if it is being requested successfully.
             if (errorContent == null) {
-                currentLoc = (TextView) findViewById(R.id.currentStopLocation);
-                currentLoc.setText(curLocation);
-                currentDir = (TextView) findViewById(R.id.currentLocationDir);
-                currentDir.setText(direction);
+                currentLocTextView = (TextView) findViewById(R.id.currentStopLocationTextView);
+                currentLocTextView.setText(curLocation);
+                currentDirTextView = (TextView) findViewById(R.id.currentLocationDirTextView);
+                currentDirTextView.setText(direction);
 
                 //Check arrivals information whether is empty or not
-                if (stopInfoList.isEmpty()) {
-                    noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                    noArrivalInfo.setVisibility(View.VISIBLE);
-                    noArrivalInfo.setText(arrivalInfo);
+                if (noArrivalInfo != null) {
+                    noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                    noArrivalInfoTextView.setVisibility(View.VISIBLE);
+                    noArrivalInfoTextView.setText(noArrivalInfo);
 
                     //Make TextView Invisible when no arrival found
-                    errorTextBox = (TextView) findViewById(R.id.errorContent);
-                    errorTextBox.setVisibility(View.GONE);
+                    errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                    errorTextView.setVisibility(View.GONE);
 
                 } else {
                     //Put information to listView
-                    adapter = new SimpleAdapter(StopArrivalCheckActivity.this, stopInfoList,
+                    adapter = new CustomStopArrivalListAdapter(StopArrivalCheckActivity.this, stopInfoResultList,
                             R.layout.stop_info_list_item, new String[]{"shortStreetName",
                             "scheduledArrivalTime", "estimatedArrivalTime", "fullStreetName", "RemainingTime", "detourInfo"},
                             new int[]{R.id.shortStreetName, R.id.scheduledArrivalTime,
@@ -175,21 +177,21 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
                     lv.setAdapter(adapter);
 
                     //Make TextView Invisible when they have no content
-                    noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                    noArrivalInfo.setVisibility(View.GONE);
-                    errorTextBox = (TextView) findViewById(R.id.errorContent);
-                    errorTextBox.setVisibility(View.GONE);
+                    noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                    noArrivalInfoTextView.setVisibility(View.GONE);
+                    errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                    errorTextView.setVisibility(View.GONE);
                 }
 
             } else {
                 //Display Error message when request is not processed successfully.
-                errorTextBox = (TextView) findViewById(R.id.errorContent);
-                errorTextBox.setVisibility(View.VISIBLE);
-                errorTextBox.setText(errorContent);
+                errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                errorTextView.setVisibility(View.VISIBLE);
+                errorTextView.setText(errorContent);
 
                 //Make noArrivalFound Message TextView Invisible
-                noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                noArrivalInfo.setVisibility(View.GONE);
+                noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                noArrivalInfoTextView.setVisibility(View.GONE);
             }
 
         }

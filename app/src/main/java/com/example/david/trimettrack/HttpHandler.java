@@ -76,31 +76,3 @@ public class HttpHandler {
         return sb.toString();
     }
 }
-
-
-/**
- * Volley request
- *
- *
- * RequestQueue request = Volley.newRequestQueue(this);
- JsonObjectRequest jsObjRequest = new JsonObjectRequest
- (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-@Override
-public void onResponse(JSONObject response) {
-stopDetail.setText("Response: " + response.toString());
-}
-}, new Response.ErrorListener() {
-
-@Override
-public void onErrorResponse(VolleyError error) {
-// TODO Auto-generated method stub
-stopDetail.setText("No Information");
-}
-});
-
- // Access the RequestQueue through your singleton class.
- request.add(jsObjRequest);
- *
- *
- */
