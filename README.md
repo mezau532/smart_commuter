@@ -17,28 +17,28 @@ This week and next week we will focus on getting the backend started (first gett
 logic that we will need.
 
 ## Project Description
-This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-Although there are a lot of good transportation app out there, but some have too much features which confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app. We only implement needed features; allowing users to see clearly and easyly meet their needs. <br />
+This is a mobile app that can be used to find public/ride share transportation in the metro area. We know that there are a lot of good transportation apps out there, but some have too much features which would maybe confuse users. Hence, our general idea behind this app is to provide user a friendly and easy use app with only needed features, so allowing users to easily meet their needs upon using public transportatoin in the metro area. <br />
 
 
 ## Project Structure
 The app is splited with few activities
 * Trimet StopId Arrival Time LookUp 
-* Trip Planner through Lyft and Uber
-* More maybe...
+* Price lookup through Lyft and Uber
+* Check nearby stops upon a current location coordinate
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
 * Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
 * Build: Download needed packages when you are in the studio and Run the program
-         
+* Platform: Android only; Language: en-US
+* Minimum SDK: Version 23         
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
 
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
-*
+* Find Ride: Enter address to check price to your destination.
+* Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
-
