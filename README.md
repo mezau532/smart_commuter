@@ -17,28 +17,29 @@ This week and next week we will focus on getting the backend started (first gett
 logic that we will need.
 
 ## Project Description
-This is a mobile app that can be used to find public/ride share transportation in the metro area, which allows people to check arrival time for a specific stop, check the best ride for their trip(uber,lyft OR trimet), etc(will add more).
-Although there are a lot of good transportation app out there, but some have too much features which confused users. Hence, our general idea behind this app is to provide user a friendly and easy use app. We only implement needed features; allowing users to see clearly and easyly meet their needs. <br />
+This is a mobile app that can be used to find public/ride share transportation in the metro area. We know that there are a lot of good transportation apps out there, but some have too much features which would maybe confuse users. Hence, our general idea behind this app is to provide user a friendly and easy use app with only needed features, so allowing users to easily meet their needs upon using public transportatoin in the metro area. <br />
 
 
 ## Project Structure
-The app is splited with few activities
-* Trimet StopId Arrival Time LookUp 
-* Trip Planner through Lyft and Uber
-* More maybe...
+The app is splited with two services
+* Trimet service: 1.Check a stop arrival information; 2. Find your current location nearby Stops
+* Uber/Lyft: Provide you a price and duration from your current location to a destination.
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
 * Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
-* Build: Download needed packages when you are in the studio and Run the program
-         
+* Build: Download needed packages when you are in the studio,Clean Proejct, Rebuild Project, Then RUN the project.
+* Platform: Android only; Language: en-US
+* Minimum SDK: Version 23         
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
 
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
-*
+* Find Ride: Enter address(OR check the current location checkbox) to check price and duration to your destination.
+* Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
-
+* Both Trimet services JSON parser are based on: https://www.androidhive.info/2012/01/android-json-parsing-tutorial by RAVI TAMADA
+* GetLocationClass is based on: https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial by RAVI TAMADA
