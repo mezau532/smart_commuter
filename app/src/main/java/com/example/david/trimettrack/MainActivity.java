@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected GetCurrentLocation location;
     protected EditText stopIdInput;
 
     @Override
@@ -45,15 +46,17 @@ public class MainActivity extends AppCompatActivity {
                 if(checked){
 
                     //Get current location data (latitude, longitude)
-                    GetCurrentLocation location = new GetCurrentLocation(this);
+                    location = new GetCurrentLocation(this);
                     location.getLocation();
                     String latitude = location.getLatitude();
                     String longitude = location.getLongitude();
 
                     //Goto Check_Nearby_Stops_Activity
                     i = new Intent(this, NearbyStopCheckActivity.class);
-                    i.putExtra("current_latitude",latitude);
-                    i.putExtra("current_longitude",longitude);
+                    if(latitude != null && longitude != null) {
+                        i.putExtra("current_latitude", latitude);
+                        i.putExtra("current_longitude", longitude);
+                    }
                     startActivity(i);
                 }
                 else{
@@ -61,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(this, StopArrivalCheckActivity.class);
                     stopIdInput = (EditText) findViewById(R.id.stopIdInputBox);
                     String stopId = stopIdInput.getText().toString();
-                    i.putExtra("stopIdInput", stopId);
+                    if(stopId.isEmpty() == false) {
+                        i.putExtra("stopIdInput", stopId);
+                    }
                     startActivity(i);
                 }
                 break;
@@ -110,15 +115,16 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED
                         && grantResults[2]==PackageManager.PERMISSION_GRANTED)) {
 
-                    // permission was granted, yay! Do the
+                    // When permission was granted, Do the
                     // location-related task you need to do.
-
+                    location = new GetCurrentLocation(this);
+                    location.getLocation();
 
                 } else {
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(MainActivity.this,"You need enable Location Service to use this feature",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"You need enable Location Service to use Find Nearby Stop feature",Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:

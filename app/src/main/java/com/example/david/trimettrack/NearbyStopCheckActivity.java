@@ -54,13 +54,9 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
 
         // Get data that are needed for the request from Main Activity
         Bundle locationData = getIntent().getExtras();
-        if (locationData == null)
-            return;
-        cur_lat = locationData.getString("current_latitude");
-        cur_lng = locationData.getString("current_longitude");
-
-        //Check required data
-        if(cur_lat.length() > 0 && cur_lng.length()> 0 ) {
+        if (locationData != null){
+            cur_lat = locationData.getString("current_latitude");
+            cur_lng = locationData.getString("current_longitude");
             // Define Request URL
             url = MessageFormat.format("https://developer.trimet.org/ws/V1/stops?ll" +
                     "={0},{1}&meters={2}&appID={3}&json=true",cur_lat,cur_lng,range,appId);
@@ -68,7 +64,7 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
             new GetNearbyStop().execute(url);
         }
         else{
-            Toast.makeText(NearbyStopCheckActivity.this,"No Current Location Receive !!!",Toast.LENGTH_LONG);
+            Toast.makeText(NearbyStopCheckActivity.this,"No Current Location Receive !! \nPlease Enable Location Service !!!",Toast.LENGTH_LONG).show();
         }
 
     }
@@ -93,7 +89,6 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
                 nearbyStopJsonResult = new NearbyStopJSONParser(link,cur_lat,cur_lng);
                 nearbyStopResultList = nearbyStopJsonResult.getNearbyStopResultList();
 
-
             } catch (Exception e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
                 runOnUiThread(new Runnable() {
@@ -116,11 +111,8 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
                 // Put information to listView
                 adapter = new SimpleAdapter(NearbyStopCheckActivity.this, nearbyStopResultList,
                         R.layout.nearby_stop_list_item, new String[]{"sign", "locationId", "distance", "duration"},
-                        new int[]{R.id.signTextView, R.id.stopIdTextView,
-                                R.id.distanceTextView, R.id.durationTextView});
-
+                        new int[]{R.id.signTextView, R.id.stopIdTextView, R.id.distanceTextView, R.id.durationTextView});
                 lv.setAdapter(adapter);
-
 
                 // Perform listView item click event
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -131,6 +123,7 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
                         String stopId = ((TextView) view.findViewById(R.id.stopIdTextView)).getText().toString();
                         i.putExtra("stopIdInput", stopId);
                         startActivity(i);
+                        finish();
                     }
                 });
             }

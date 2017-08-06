@@ -1,7 +1,6 @@
 package com.example.david.trimettrack;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;

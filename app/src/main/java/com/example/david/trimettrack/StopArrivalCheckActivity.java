@@ -73,10 +73,10 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
 
         //Get data that is being passed from Main Activity
         Bundle stopData = getIntent().getExtras();
-        if (stopData == null)
-            return;
-        stopId = stopData.getString("stopIdInput");
-        if(stopId.length() > 0){
+        if (stopData != null)
+        {
+            stopId = stopData.getString("stopIdInput");
+
             stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
             stopIDEditText.setText(stopId);
             //Define the URL that going to be retrieve data from
@@ -172,8 +172,8 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
                     adapter = new CustomStopArrivalListAdapter(StopArrivalCheckActivity.this, stopInfoResultList,
                             R.layout.stop_info_list_item, new String[]{"shortStreetName",
                             "scheduledArrivalTime", "estimatedArrivalTime", "fullStreetName", "RemainingTime", "detourInfo"},
-                            new int[]{R.id.shortStreetName, R.id.scheduledArrivalTime,
-                                    R.id.estimatedArrivalTime, R.id.fullStreetName, R.id.TimeLeft, R.id.detourInfo});
+                            new int[]{R.id.shortStreetNameTextView, R.id.scheduledArrivalTimeTextView,
+                                    R.id.estimatedArrivalTimeTextView, R.id.fullStreetNameTextView, R.id.timeLeftTextView, R.id.detourInfoTextView});
                     lv.setAdapter(adapter);
 
                     //Make TextView Invisible when they have no content
