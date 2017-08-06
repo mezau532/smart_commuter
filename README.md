@@ -21,15 +21,14 @@ This is a mobile app that can be used to find public/ride share transportation i
 
 
 ## Project Structure
-The app is splited with few activities
-* Trimet StopId Arrival Time LookUp 
-* Price lookup through Lyft and Uber
-* Check nearby stops upon a current location coordinate
+The app is splited with two services
+* Trimet service: 1.Check a stop arrival information; 2. Find your current location nearby Stops
+* Uber/Lyft: Provide you a price and duration from your current location to a destination.
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
 * Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
-* Build: Download needed packages when you are in the studio and Run the program
+* Build: Download needed packages when you are in the studio,Clean Proejct, Rebuild Project, Then RUN the project.
 * Platform: Android only; Language: en-US
 * Minimum SDK: Version 23         
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
@@ -37,8 +36,10 @@ This app is written with JAVA and XML using Android Studio.
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
-* Find Ride: Enter address to check price to your destination.
+* Find Ride: Enter address(OR check the current location checkbox) to check price and duration to your destination.
 * Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
+* Both Trimet services JSON parser are based on: https://www.androidhive.info/2012/01/android-json-parsing-tutorial by RAVI TAMADA
+* GetLocationClass is based on: https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial by RAVI TAMADA
