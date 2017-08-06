@@ -2,6 +2,8 @@ package com.example.david.trimettrack;
 
 /**
  * Created by David on 7/18/2017.
+ * This class is based on tutorialspoint.com site.If you want to know more detail, please visit
+ * https://www.tutorialspoint.com/android/android_json_parser.html.
  */
 
 import android.util.Log;
@@ -16,14 +18,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-
-/**
- * This class is copied from the TutorialsPoint site. I found out it is a pretty
- * solution to solve my http request problem so I will be using this class
- * throughout my app as the httphandler.
- * If you want to read more detail about the codes below, please
- * visit https://www.tutorialspoint.com/android/android_json_parser.html.
- */
 
 public class HttpHandler {
 

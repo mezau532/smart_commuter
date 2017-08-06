@@ -12,12 +12,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 public class StopArrivalCheckActivity extends AppCompatActivity {
 

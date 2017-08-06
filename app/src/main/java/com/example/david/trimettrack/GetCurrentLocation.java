@@ -13,13 +13,11 @@ import android.util.Log;
 
 /**
  * Created by David on 8/1/2017.
- */
-
-
-/**
  * This class is based on a post "Android GPS, Location Manager Tutorial" by RAVI TAMADA.
- * More detail on https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial/
+ * More detail on https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
  */
+
+
 public class GetCurrentLocation extends Service implements LocationListener{
 
     private final Context mContext;

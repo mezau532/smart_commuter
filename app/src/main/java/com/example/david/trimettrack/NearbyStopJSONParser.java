@@ -13,7 +13,9 @@ import java.util.HashMap;
 
 /**
  * Created by David on 8/3/2017.
+ * This class is based on https://www.androidhive.info/2012/01/android-json-parsing-tutorial/ by RAVI TAMADA
  */
+
 
 public class NearbyStopJSONParser {
 
