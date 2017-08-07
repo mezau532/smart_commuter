@@ -72,10 +72,6 @@ public class FindRideActivity extends AppCompatActivity {
     private String serverToken = "XtW6q7Yu7QSHxAfUhcAQTtbkVemZoHAH7XTeIDqi";
     public String StartAddress;
     public String DestinationAddress;
-    public String ClientId = "R7K9RlJA-H87";
-    public String ClientSecret = "rZnj1OvXQxgk8eCHoCp7owAHCjPIWqhZ";
-    public String ClientToken = "roVZU6oVJyhdGGoM/VFKhmyuTmOYvBalKiezPB5PiHiTqsB72/1chvNJ/Zdx/YgvDdKfKiOGSMNBLJbKaXVOyNfj/2cWqAbDzz9gfRh8pA9Av/n0YyUCHbs=";
-    public String GoogleBaseUrl = "https://maps.googleapis.com";
     public String GoogleApiKey = "AIzaSyA8IHKgx_3xnloVW5kH8shDwaw67Mu67Co";
 
     @Override
@@ -161,10 +157,7 @@ public class FindRideActivity extends AppCompatActivity {
         LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync(this);
         StartAddress = "start";
         DestinationAddress = "destination";
-//        lyftRideInfoSync.execute(StartAddress, DestinationAddress);
 
-        TextView RideOutput;
-        HttpHandler httpHandler = new HttpHandler();
         final EditText StartAddressET = (EditText) findViewById(R.id.StartInputBox);
         final EditText DestinationAddressET = (EditText) findViewById(R.id.DestinationInputBox);
         StartAddress = StartAddressET.getText().toString();
@@ -177,8 +170,6 @@ public class FindRideActivity extends AppCompatActivity {
         DestinationAddressET.setText("");
 
         lyftRideInfoSync.execute(StartAddress, DestinationAddress);
-        //the following code is from Lyft-sdk github:
-        RideOutput = (TextView) findViewById(R.id.RideOutputBox);
 
 
     }
@@ -213,7 +204,6 @@ public class FindRideActivity extends AppCompatActivity {
         public String results;
         //TODO at some point I want to take these out of the code
         //I don't know how I will do it right now because we need
-        //I don't know how I will do it right now because we need
         //the clientid and secrete to make lyft api calls
         public String ClientId = "R7K9RlJA-H87";
         public String ClientSecret = "rZnj1OvXQxgk8eCHoCp7owAHCjPIWqhZ";
@@ -230,15 +220,12 @@ public class FindRideActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             Intent i = new Intent(context, UberLyftListActivity.class);
-            TextView RideOutput;
-            RideOutput = (TextView) findViewById(R.id.RideOutputBox);
             if(result == ""){
-                RideOutput.setText("please input valid address");
+                //TODO: add an invisible output for invalid output
                 return;
             }
 
             if(result == null){
-                RideOutput.setText("Sorry no lyft rides found");
                 i.putExtra("LyftList", "null");
                 cheapestLyft = null;
             }
@@ -263,10 +250,6 @@ public class FindRideActivity extends AppCompatActivity {
             try {
                 String startAddress = strings[0];
                 String destinationAddress = strings[1];
-                String startLng = "-122.3918";
-                String startLat = "37.7763";
-                String endLng = "-122.4533";
-                String endLat = "37.7972";
 
                 LocationDTO srt;
                 LocationDTO dest;
@@ -347,7 +330,6 @@ public class FindRideActivity extends AppCompatActivity {
 
                 //print result
                 System.out.println(response.toString());
-//            this.results = response.toString();
                 return response.toString();
             } catch (IOException e) {
                 e.printStackTrace();
