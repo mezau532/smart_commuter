@@ -80,8 +80,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="#d8e5cf" />
     <!-- Add a honrizontal line between TextView -->
 
@@ -89,10 +89,11 @@
         android:id="@+id/logo_lyft_uber"
         android:layout_width="match_parent"
         android:layout_height="105dp"
-        android:scaleType="centerCrop"
-        android:padding="90dp"
-        app:srcCompat="@drawable/logo_lyft_uber"
-        android:contentDescription="@string/lyft_and_uber_imageview_description" />
+        android:contentDescription="@string/lyft_and_uber_imageview_description"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo_lyft_uber" />
 
     <Button
         android:id="@+id/RideShareButton"

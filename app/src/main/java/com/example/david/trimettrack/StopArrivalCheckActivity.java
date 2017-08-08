@@ -25,7 +25,7 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
 
     //Important data variable for API request
     private String stopId;
-    private String appId;
+    private String trimetApiKey;
     private String url;
 
     //JSON Parser Variable
@@ -57,10 +57,12 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stop_arrival_check);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+
+        //Get Trimet API Key
         try {
             ApplicationInfo ai = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
-            appId = bundle.getString("trimetAppID");
+            trimetApiKey = bundle.getString("trimetAppID");
         } catch (Exception e) {
             Log.e(TAG, "You need to configure the meta-data first.");
         }
@@ -81,7 +83,7 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
             stopIDEditText.setText(stopId);
             //Define the URL that going to be retrieve data from
             url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
-                    stopId,appId);
+                    stopId, trimetApiKey);
 
             //Get the result and set content to ListView
             new GetStopInfo().execute(url);
@@ -97,7 +99,7 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
         stopId = stopIDEditText.getText().toString();
         url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
-                stopId,appId);
+                stopId, trimetApiKey);
 
         //Clean the list before receive new information
         stopInfoResultList.clear();

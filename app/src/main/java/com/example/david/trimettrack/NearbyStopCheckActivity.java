@@ -40,7 +40,7 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_nearby_check);
 
-        // Get Trimet APPID
+        // Get Trimet Api Key
         try {
             ApplicationInfo ai = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
