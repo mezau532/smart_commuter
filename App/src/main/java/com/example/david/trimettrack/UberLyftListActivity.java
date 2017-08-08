@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -30,6 +31,8 @@ public class UberLyftListActivity extends AppCompatActivity {
     String[] defaultRideDistances = { " " };
     String[] defaultRideDurations = { " " };
     String[] defaultRideCosts = { " " };
+    TextView init;
+    TextView dest;
     int arraySize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,12 @@ public class UberLyftListActivity extends AppCompatActivity {
             return;
         String result = data.getString("LyftList");
         String results = data.getString("UberList");
+        String startAdd = data.getString("startAdd");
+        String endAdd = data.getString("endAdd");
+        init = (TextView) findViewById(R.id.InitOut);
+        dest = (TextView) findViewById(R.id.DestOut);
+        init.setText(startAdd);
+        dest.setText(endAdd);
 
         if(! (result.equals("null"))) {
             JsonParser jsonParser = new JsonParser();
@@ -78,28 +87,28 @@ public class UberLyftListActivity extends AppCompatActivity {
           //  String uberCost = MessageFormat.format("${0}-{1}", cheapestUber.getLow_estimate(), cheapestUber.getHigh_estimate());
             String lyftCost = cheapestLyft.getFormattedCost();
             rideCosts = new String[] { cheapestUber.getEstimate(), lyftCost};
-            String uberDuration = MessageFormat.format("Duration: {0}minutes", cheapestUber.getFormattedDuration());
-            String lyftDuration = MessageFormat.format("Duration: {0}minutes", cheapestLyft.getFormattedDuration());
+            String uberDuration = MessageFormat.format("Duration: {0}", cheapestUber.getFormattedDuration());
+            String lyftDuration = MessageFormat.format("Duration: {0}", cheapestLyft.getFormattedDuration());
             rideDurations = new String[] {uberDuration, lyftDuration};
-            String uberDistance = MessageFormat.format("Distance: {0}miles", cheapestUber.getDistance());
-            String lyftDistance = MessageFormat.format("Distance: {0}miles", cheapestLyft.getEstimated_distance_miles());
+            String uberDistance = MessageFormat.format("Distance: {0}m", cheapestUber.getDistance());
+            String lyftDistance = MessageFormat.format("Distance: {0}m", cheapestLyft.getEstimated_distance_miles());
             rideDistances = new String[] {uberDistance, lyftDistance};
         }
         else{
             if(cheapestLyft != null){
                 rideTypes = new String[] { cheapestLyft.getRide_type() };
                 rideCosts = new String[] { cheapestLyft.getFormattedCost() };
-                String lyftDuration = MessageFormat.format("Duration: {0}minutes", cheapestLyft.getFormattedDuration());
+                String lyftDuration = MessageFormat.format("Duration: {0}m", cheapestLyft.getFormattedDuration());
                 rideDurations = new String[] { lyftDuration };
-                String lyftDistance = MessageFormat.format("Distance: {0}miles", cheapestLyft.getEstimated_distance_miles());
+                String lyftDistance = MessageFormat.format("Distance: {0}m", cheapestLyft.getEstimated_distance_miles());
                 rideDistances = new String[] { lyftDistance };
             }
             if(cheapestUber != null){
                 rideTypes = new String[] { cheapestUber.getDisplay_name() };
                 rideCosts = new String[] { cheapestUber.getEstimate() };
-                String uberDuration = MessageFormat.format("Duration: {0}minutes", cheapestUber.getFormattedDuration());
+                String uberDuration = MessageFormat.format("Duration: {0}", cheapestUber.getFormattedDuration());
                 rideDurations = new String[] { uberDuration };
-                String uberDistance = MessageFormat.format("Distance: {0}miles", cheapestUber.getDistance());
+                String uberDistance = MessageFormat.format("Distance: {0}m", cheapestUber.getDistance());
                 rideDistances = new String[] { uberDistance };
             }
         }

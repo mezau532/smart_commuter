@@ -1,6 +1,9 @@
 package Sync.Info;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by umeza on 7/20/17.
@@ -62,9 +65,13 @@ public class CostEstimateDTO {
         return MessageFormat.format("${0}-{1}", low, high);
     }
 
-    public double getFormattedDuration(){
-        double dur = this.estimated_duration_seconds/60;
-        return dur;
+    public String getFormattedDuration(){
+        int millis = this.estimated_duration_seconds * 1000;
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        df.setTimeZone(tz);
+        String time = df.format(new Date(millis));
+        return time;
     }
     public void setRide_type(String ride_type){
         this.ride_type = ride_type;

@@ -19,11 +19,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/stopIdInputBoxMarginLeft"
+            android:background="@drawable/round_shape_button"
             android:hint="@string/enter_stop_id_here"
             android:inputType="number"
-            android:textAlignment="center"
             android:padding="@dimen/stopIdInputBoxPadding"
-            android:background="@drawable/round_shape_button"
+            android:textAlignment="center"
 
             tools:ignore="RtlHardcoded" />
 
@@ -31,11 +31,11 @@
             android:id="@+id/stopIdRefreshButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/refreshButton"
-            android:onClick="onClick"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="43dp"
             android:layout_toEndOf="@+id/stopIdInputBox"
-            android:layout_marginStart="43dp" />
+            android:onClick="onClick"
+            android:text="@string/refreshButton" />
 
     </RelativeLayout>
 

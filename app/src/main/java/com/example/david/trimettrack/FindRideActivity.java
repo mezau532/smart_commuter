@@ -2,12 +2,9 @@ package com.example.david.trimettrack;
 
 import Sync.GoogleGeocodeSync;
 import Sync.Info.CostEstimateDTO;
-import Sync.Info.ListOfCostEstimateDtos;
 import Sync.Info.LocationDTO;
 import Sync.Info.LyftClientCredentials;
 import Sync.Info.UberCostEstimateDTO;
-import Sync.Info.UberListOfCostEstimateDTOs;
-import Sync.UberSync;
 
 import android.Manifest;
 import android.content.Context;
@@ -21,46 +18,28 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializer;
-import com.google.gson.reflect.TypeToken;
-import com.lyft.lyftbutton.LyftButton;
-import com.lyft.lyftbutton.RideParams;
-import com.lyft.lyftbutton.RideTypeEnum;
-import com.lyft.networking.ApiConfig;
-
-import org.json.JSONException;
-//import org.json.JSONObject;
-//import org.json.simple.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class FindRideActivity extends AppCompatActivity {
+    Location loc;
     private LocationManager locationManager;
     private LocationListener listener;
-    double lat;
-    double lng;
+    String lat;
+    String lng;
     private CheckBox locationCheckbox;
     private EditText startAdressInput;
     //don't know if I want these private or not?
@@ -73,11 +52,17 @@ public class FindRideActivity extends AppCompatActivity {
     public String StartAddress;
     public String DestinationAddress;
     public String GoogleApiKey = "AIzaSyA8IHKgx_3xnloVW5kH8shDwaw67Mu67Co";
+    ProgressBar loading;
+    TextView invalidInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_ride);
+        loading = (ProgressBar) findViewById(R.id.loadIndicator);
+        loading.setVisibility(View.INVISIBLE);
+        invalidInput = (TextView) findViewById(R.id.InvalidInput);
+        invalidInput.setVisibility(View.INVISIBLE);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -85,8 +70,8 @@ public class FindRideActivity extends AppCompatActivity {
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                lat = location.getLatitude();
-                lng = location.getLongitude();
+                lat = MessageFormat.format("{0}", location.getLatitude());
+                lng = MessageFormat.format("{0}", location.getLongitude());
             }
 
             @Override
@@ -131,9 +116,29 @@ public class FindRideActivity extends AppCompatActivity {
             return;
         }
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60000, 0, listener);
+            Log.d("Network", "Network");
+            if (locationManager != null) {
+                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (loc != null) {
+                    lng = String.valueOf(loc.getLongitude());
+                    lat = String.valueOf(loc.getLatitude());
+                }
+            }
+        }
+        // if GPS Enabled get lat/long using GPS Services
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            if (loc == null) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 0, listener);
+                Log.d("GPS Enabled", "GPS Enabled");
+                if (locationManager != null) {
+                    loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    if (loc != null) {
+                        lng = String.valueOf(loc.getLongitude());
+                        lat = String.valueOf(loc.getLatitude());
+                    }
+                }
+            }
         }
     }
 
@@ -143,17 +148,22 @@ public class FindRideActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.LocationCheckBox:
                 if(checked){
+                      startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                      startAdressInput.setEnabled(false);
                       geocodeAddress geocode = new geocodeAddress(this);
                       geocode.execute(lat, lng);
                 }
                 else{
                     startAdressInput = (EditText) findViewById(R.id.StartInputBox);
+                    startAdressInput.setEnabled(true);
                     startAdressInput.setText("");
                 }
         }
     }
 
     public void onClick(View view) {
+        loading.setVisibility(View.VISIBLE);
+        invalidInput.setVisibility(View.INVISIBLE);
         LyftRideInfoSync lyftRideInfoSync = new LyftRideInfoSync(this);
         StartAddress = "start";
         DestinationAddress = "destination";
@@ -173,7 +183,7 @@ public class FindRideActivity extends AppCompatActivity {
 
 
     }
-    public class geocodeAddress extends AsyncTask<Double, Void, String> {
+    public class geocodeAddress extends AsyncTask<String, Void, String> {
         private Context context;
         public geocodeAddress(Context context){
             this.context = context;
@@ -191,9 +201,9 @@ public class FindRideActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(Double... doubles) {
+        protected String doInBackground(String... strings) {
             GoogleGeocodeSync geocoder = new GoogleGeocodeSync();
-            String address = geocoder.getAddress(doubles[0], doubles[1], GoogleApiKey);
+            String address = geocoder.getAddress(strings[0], strings[1], GoogleApiKey);
             return address;
         }
     }
@@ -202,11 +212,6 @@ public class FindRideActivity extends AppCompatActivity {
         private Context context;
         private Exception exeption;
         public String results;
-        //TODO at some point I want to take these out of the code
-        //I don't know how I will do it right now because we need
-        //the clientid and secrete to make lyft api calls
-        public String ClientId = "R7K9RlJA-H87";
-        public String ClientSecret = "rZnj1OvXQxgk8eCHoCp7owAHCjPIWqhZ";
         public String ClientToken = "roVZU6oVJyhdGGoM/VFKhmyuTmOYvBalKiezPB5PiHiTqsB72/1chvNJ/Zdx/YgvDdKfKiOGSMNBLJbKaXVOyNfj/2cWqAbDzz9gfRh8pA9Av/n0YyUCHbs=";
         public LyftClientCredentials Creds = new LyftClientCredentials();
 
@@ -219,12 +224,16 @@ public class FindRideActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
+            loading.setVisibility(View.INVISIBLE);
             Intent i = new Intent(context, UberLyftListActivity.class);
             if(result == ""){
                 //TODO: add an invisible output for invalid output
+                invalidInput.setVisibility(View.VISIBLE);
                 return;
             }
 
+            i.putExtra("startAdd", StartAddress);
+            i.putExtra("endAdd", DestinationAddress);
             if(result == null){
                 i.putExtra("LyftList", "null");
                 cheapestLyft = null;

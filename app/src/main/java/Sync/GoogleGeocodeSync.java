@@ -25,7 +25,7 @@ import Sync.Info.LocationDTO;
 public class GoogleGeocodeSync {
     private LocationDTO location;
     String add;
-    public String getAddress(double lat, double lng, String key){
+    public String getAddress(String lat, String lng, String key){
         try {
             String googleUrl = MessageFormat.format(
                     "https://maps.googleapis.com/maps/api/geocode/json?latlng={0},{1}&key={2}",
