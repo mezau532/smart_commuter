@@ -10,14 +10,14 @@
         android:id="@+id/Dest"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/Init"
         android:background="#c7c0c0"
         android:padding="10dp"
         android:text="End:"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:layout_toStartOf="@+id/InitOut" />
+        android:layout_alignEnd="@+id/Init"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/Init"
@@ -41,6 +41,7 @@
         android:background="#c7c0c0"
         android:padding="10dp"
         android:textSize="17sp"
+        android:layout_toRightOf="@+id/Dest"
         android:textStyle="italic" />
 
     <TextView
@@ -52,7 +53,8 @@
         android:background="#c7c0c0"
         android:padding="10dp"
         android:textSize="17sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_toRightOf="@+id/Init"/>
 
     <ListView
         android:id="@+id/uberLyftList"
