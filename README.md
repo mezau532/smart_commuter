@@ -8,7 +8,7 @@ This app is under the "MIT License". Please see the file LICENSE in this distrib
 ## Week 3 Report
 ### What we have been working on
 We have been learning about android/mobile development, since no one on our team has previous experience with it and we have decided
-on using Xamarin (a Visual studio tool for ios/android/UWP development) we have been experimenting with making simple apps to get an
+on using Android Studio (a Visual studio tool for android development) we have been experimenting with making simple apps to get an
 understanding of what is required for the UI and the backend to work. We also spent time designing the project.
 ### Challenges
 The main challenges we have run into have been with setting up Visual Studio and just not having experience with android development.
@@ -21,14 +21,15 @@ This is a mobile app that can be used to find public/ride share transportation i
 
 
 ## Project Structure
-The app is splited with two services
-* Trimet service: 1.Check a stop arrival information; 2. Find your current location nearby Stops
-* Uber/Lyft: Provide you a price and duration from your current location to a destination.
+The app is splited with few activities
+* Trimet StopId Arrival Time LookUp 
+* Price lookup through Lyft and Uber
+* Check nearby stops upon a current location coordinate
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
-* Build Prerequisites: Android Studio
-* Build: Download needed packages when you are in the studio(will be prompted), Clean Proejct, Rebuild Project, Then RUN the project.
+* Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
+* Build: Download needed packages when you are in the studio and Run the program
 * Platform: Android only; Language: en-US
 * Minimum SDK: Version 23         
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
