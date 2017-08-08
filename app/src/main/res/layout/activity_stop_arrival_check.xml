@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -13,60 +12,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/StopInfoTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/stopIdInputBox"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="17dp"
-            android:text="Stop ID"
-            android:textColor="#5c4040"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:textAlignment="center"/>
 
         <EditText
             android:id="@+id/stopIdInputBox"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/StopInfoTitle"
-            android:ems="10"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/stopIdInputBoxMarginLeft"
+            android:background="@drawable/round_shape_button"
+            android:hint="@string/enter_stop_id_here"
             android:inputType="number"
-            android:hint="your Stop ID"
-            android:text="Stop ID"
-            android:layout_alignParentTop="true" />
+            android:padding="@dimen/stopIdInputBoxPadding"
+            android:textAlignment="center"
+
+            tools:ignore="RtlHardcoded" />
 
         <Button
             android:id="@+id/stopIdRefreshButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="14dp"
-            android:text="Refresh"
+            android:layout_marginStart="43dp"
+            android:layout_toEndOf="@+id/stopIdInputBox"
             android:onClick="onClick"
-            android:imeOptions="actionDone"/>
+            android:text="@string/refreshButton" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="@string/current_location"
-            android:id="@+id/currentStopLocation"
+            android:id="@+id/currentStopLocationTextView"
             android:textColor="#3d3837"
             android:textSize="20sp"
-            android:background="#c7c0c0"/>
-
+            android:background="#c7c0c0"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         <TextView
-            android:id="@+id/currentLocationDir"
+            android:id="@+id/currentLocationDirTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#c7c0c0"
@@ -84,16 +74,17 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/noArrivalInfo"
+        android:id="@+id/noArrivalInfoTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#986c4e"
         android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginLeft="@dimen/noArrivalInfoMarginTop"
+        android:layout_marginTop="10dp"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
-        android:id="@+id/errorContent"
+        android:id="@+id/errorFoundTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"

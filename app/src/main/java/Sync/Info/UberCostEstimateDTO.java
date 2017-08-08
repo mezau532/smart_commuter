@@ -1,12 +1,16 @@
 package Sync.Info;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by umeza on 7/24/17.
  */
 
 public class UberCostEstimateDTO {
     String localized_display_name;
-    double distance;
+    float distance;
     String display_name;
     String product_id;
     int high_estimate;
@@ -52,15 +56,23 @@ public class UberCostEstimateDTO {
         this.localized_display_name = localized_display_name;
     }
 
+    public String getFormattedDuration(){
+        int millis = this.duration * 1000;
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        df.setTimeZone(tz);
+        String time = df.format(new Date(millis));
+        return time;
+    }
     public String getLocalized_display_name() {
         return this.localized_display_name;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(float distance) {
         this.distance = distance;
     }
 
-    public double getDistance() {
+    public float getDistance() {
         return this.distance;
     }
 

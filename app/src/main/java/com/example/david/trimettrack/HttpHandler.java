@@ -2,6 +2,8 @@ package com.example.david.trimettrack;
 
 /**
  * Created by David on 7/18/2017.
+ * This class is based on tutorialspoint.com site.If you want to know more detail, please visit
+ * https://www.tutorialspoint.com/android/android_json_parser.html.
  */
 
 import android.util.Log;
@@ -16,14 +18,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-
-/**
- * This class is copied from the TutorialsPoint site. I found out it is a pretty
- * solution to solve my http request problem so I will be using this class
- * throughout my app as the httphandler.
- * If you want to read more detail about the codes below, please
- * visit https://www.tutorialspoint.com/android/android_json_parser.html.
- */
 
 public class HttpHandler {
 
@@ -76,31 +70,3 @@ public class HttpHandler {
         return sb.toString();
     }
 }
-
-
-/**
- * Volley request
- *
- *
- * RequestQueue request = Volley.newRequestQueue(this);
- JsonObjectRequest jsObjRequest = new JsonObjectRequest
- (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-@Override
-public void onResponse(JSONObject response) {
-stopDetail.setText("Response: " + response.toString());
-}
-}, new Response.ErrorListener() {
-
-@Override
-public void onErrorResponse(VolleyError error) {
-// TODO Auto-generated method stub
-stopDetail.setText("No Information");
-}
-});
-
- // Access the RequestQueue through your singleton class.
- request.add(jsObjRequest);
- *
- *
- */

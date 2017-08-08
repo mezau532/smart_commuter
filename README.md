@@ -37,9 +37,10 @@ This app is written with JAVA and XML using Android Studio.
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
-* Find Ride: Enter address to check price to your destination.
+* Find Ride: Enter address(OR check the current location checkbox) to check price and duration to your destination.
 * Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
-
+* Both Trimet services JSON parser are based on: https://www.androidhive.info/2012/01/android-json-parsing-tutorial by RAVI TAMADA
+* GetLocationClass is based on: https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial by RAVI TAMADA

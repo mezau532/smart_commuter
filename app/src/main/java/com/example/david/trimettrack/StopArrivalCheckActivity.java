@@ -1,113 +1,115 @@
 package com.example.david.trimettrack;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class StopArrivalCheckActivity extends AppCompatActivity {
 
     private String TAG = StopArrivalCheckActivity.class.getSimpleName();
 
+    //Important data variable for API request
     private String stopId;
-    private String appId = "1D72A2E7E55A71C6646AD061E";
-    private String url = "https://developer.trimet.org/ws/V2/arrivals?locIDs=" + stopId + "&appID=" + appId + "&json=true";
+    private String appId;
+    private String url;
 
-    private StopInfoJSONParser result;
+    //JSON Parser Variable
+    protected StopArrivalJSONParser arrivalsResult;
 
     //List of Stop Information
-    private ListView lv;
-    private ListAdapter adapter;
-    ArrayList<HashMap<String, String>> stopInfoList;
+    protected ListView lv;
+    protected ListAdapter adapter;
+    ArrayList<HashMap<String, String>> stopInfoResultList;
 
     //Obtain Current stop ID
-    private EditText currentStopId;
+    protected EditText stopIDEditText;
 
     //Variables
-    private TextView currentDir;
-    private TextView currentLoc;
-    private TextView errorTextBox;
-    private TextView noArrivalInfo;
-    private String curLocation;
-    private String direction;
-    private String errorContent;
-    private String arrivalInfo;
+    protected TextView currentDirTextView;
+    protected TextView currentLocTextView;
+    protected TextView errorTextView;
+    protected TextView noArrivalInfoTextView;
+    protected String curLocation;
+    protected String direction;
+    protected String errorContent;
+    protected String noArrivalInfo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_arrival_check);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-
-        //Get data that is being passed from Main Activity
-        Bundle stopData = getIntent().getExtras();
-        if (stopData == null)
-            return;
-        String stopId = stopData.getString("stopIdInput");
-        currentStopId = (EditText) findViewById(R.id.stopIdInputBox);
-        currentStopId.setText(stopId);
-
-        //Define the URL that going to be retrieve data from
-        url = "https://developer.trimet.org/ws/V2/arrivals?locIDs=" + stopId + "&appID=" + appId + "&json=true";
+        try {
+            ApplicationInfo ai = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = ai.metaData;
+            appId = bundle.getString("trimetAppID");
+        } catch (Exception e) {
+            Log.e(TAG, "You need to configure the meta-data first.");
+        }
 
         //Initialize a new Array List to store arrival information for a specific stop ID
-        stopInfoList = new ArrayList<>();
+        stopInfoResultList = new ArrayList<>();
 
         //Find listView box in which it is going to display arrival information
         lv = (ListView) findViewById(R.id.stopInfoListView);
 
-        //Get the result and set content to ListView
-        new GetStopInfo().execute(url);
+        //Get data that is being passed from Main Activity
+        Bundle stopData = getIntent().getExtras();
+        if (stopData != null)
+        {
+            stopId = stopData.getString("stopIdInput");
 
+            stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
+            stopIDEditText.setText(stopId);
+            //Define the URL that going to be retrieve data from
+            url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
+                    stopId,appId);
+
+            //Get the result and set content to ListView
+            new GetStopInfo().execute(url);
+        }
+        else
+            Toast.makeText(StopArrivalCheckActivity.this,"Enter Stop ID to see Arrival Information !!!", Toast.LENGTH_LONG).show();
     }
 
     public void onClick(View view) {
         hideKeyboard(view);
-        currentStopId = (EditText) findViewById(R.id.stopIdInputBox);
-        stopId = currentStopId.getText().toString();
-        url = "https://developer.trimet.org/ws/V2/arrivals?locIDs=" + stopId + "&appID=" + appId + "&json=true";
-        stopInfoList.clear();
 
+        //Define URL and the request data
+        stopIDEditText = (EditText) findViewById(R.id.stopIdInputBox);
+        stopId = stopIDEditText.getText().toString();
+        url = MessageFormat.format("https://developer.trimet.org/ws/V2/arrivals?locIDs={0}&appID={1}&json=true",
+                stopId,appId);
+
+        //Clean the list before receive new information
+        stopInfoResultList.clear();
+
+        //Call method to retrieve a stop Arrivals result
         new GetStopInfo().execute(url);
+
+        //Avoid stack too much unused memory
         System.gc();
     }
 
     private class GetStopInfo extends AsyncTask<String, Void, Void> {
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -118,18 +120,17 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... args) {
 
-            String url = args[0];
-            Log.e(TAG, "Response from url: " + url);
+            String link = args[0];
+            Log.e(TAG, "Response from url: " + link);
 
             try {
                 //Parse the JSON response into Android Version
-                result = new StopInfoJSONParser();
-                result.getStopInfoResult(url);
-                stopInfoList = result.getStopInfoList();
-                curLocation = result.getCurLocation();
-                direction = result.getDirection();
-                errorContent = result.getErrorContent();
-                arrivalInfo = result.getArrivalInfo();
+                arrivalsResult = new StopArrivalJSONParser(link);
+                stopInfoResultList = arrivalsResult.getStopInfoResultList();
+                curLocation = arrivalsResult.getCurLocation();
+                direction = arrivalsResult.getDirection();
+                errorContent = arrivalsResult.getErrorContent();
+                noArrivalInfo = arrivalsResult.getNoArrivalInfo();
 
             } catch (Exception e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -149,46 +150,48 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            //Set Text to error TextView if it has content
+            //Display arrival information if it is being requested successfully.
             if (errorContent == null) {
-                currentLoc = (TextView) findViewById(R.id.currentStopLocation);
-                currentLoc.setText(curLocation);
-                currentDir = (TextView) findViewById(R.id.currentLocationDir);
-                currentDir.setText(direction);
+                currentLocTextView = (TextView) findViewById(R.id.currentStopLocationTextView);
+                currentLocTextView.setText(curLocation);
+                currentDirTextView = (TextView) findViewById(R.id.currentLocationDirTextView);
+                currentDirTextView.setText(direction);
 
-                if (stopInfoList.isEmpty()) {
+                //Check arrivals information whether is empty or not
+                if (noArrivalInfo != null) {
+                    noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                    noArrivalInfoTextView.setVisibility(View.VISIBLE);
+                    noArrivalInfoTextView.setText(noArrivalInfo);
 
-                    noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                    noArrivalInfo.setVisibility(View.VISIBLE);
-                    noArrivalInfo.setText(arrivalInfo);
-
-                    //Make TextView Invisible when they have no content
-                    errorTextBox = (TextView) findViewById(R.id.errorContent);
-                    errorTextBox.setVisibility(View.GONE);
+                    //Make TextView Invisible when no arrival found
+                    errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                    errorTextView.setVisibility(View.GONE);
 
                 } else {
-                    adapter = new SimpleAdapter(StopArrivalCheckActivity.this, stopInfoList,
+                    //Put information to listView
+                    adapter = new CustomStopArrivalListAdapter(StopArrivalCheckActivity.this, stopInfoResultList,
                             R.layout.stop_info_list_item, new String[]{"shortStreetName",
                             "scheduledArrivalTime", "estimatedArrivalTime", "fullStreetName", "RemainingTime", "detourInfo"},
-                            new int[]{R.id.shortStreetName, R.id.scheduledArrivalTime,
-                                    R.id.estimatedArrivalTime, R.id.fullStreetName, R.id.TimeLeft, R.id.detourInfo});
+                            new int[]{R.id.shortStreetNameTextView, R.id.scheduledArrivalTimeTextView,
+                                    R.id.estimatedArrivalTimeTextView, R.id.fullStreetNameTextView, R.id.timeLeftTextView, R.id.detourInfoTextView});
                     lv.setAdapter(adapter);
 
                     //Make TextView Invisible when they have no content
-                    noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                    noArrivalInfo.setVisibility(View.GONE);
-                    errorTextBox = (TextView) findViewById(R.id.errorContent);
-                    errorTextBox.setVisibility(View.GONE);
+                    noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                    noArrivalInfoTextView.setVisibility(View.GONE);
+                    errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                    errorTextView.setVisibility(View.GONE);
                 }
 
             } else {
-                errorTextBox = (TextView) findViewById(R.id.errorContent);
-                errorTextBox.setVisibility(View.VISIBLE);
-                errorTextBox.setText(errorContent);
+                //Display Error message when request is not processed successfully.
+                errorTextView = (TextView) findViewById(R.id.errorFoundTextView);
+                errorTextView.setVisibility(View.VISIBLE);
+                errorTextView.setText(errorContent);
 
-                //Make TextView Invisible when they have no content
-                noArrivalInfo = (TextView) findViewById(R.id.noArrivalInfo);
-                noArrivalInfo.setVisibility(View.GONE);
+                //Make noArrivalFound Message TextView Invisible
+                noArrivalInfoTextView = (TextView) findViewById(R.id.noArrivalInfoTextView);
+                noArrivalInfoTextView.setVisibility(View.GONE);
             }
 
         }

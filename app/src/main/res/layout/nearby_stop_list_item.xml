@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/signTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_textView"
+        android:textColor="#413e3e"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:background="#c7c0c0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="UselessParent">
+                <TextView
+                    android:id="@+id/stopIdTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity=""
+                    android:text="@string/stop_id_textView"
+                    android:textColor="#000000"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/durationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/duration_textView"
+                    android:textColor="#e5446d"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/distanceTextView"
+                    android:layout_toEndOf="@+id/time_icon"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageView
+                    android:id="@+id/walking_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/distanceTextView"
+                    android:layout_alignTop="@+id/distanceTextView"
+                    android:layout_toStartOf="@+id/distanceTextView"
+                    app:srcCompat="@drawable/walking_icon"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/distanceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="17dp"
+                    android:text="@string/distance_textView"
+                    android:textColor="#417178"
+                    android:textSize="23sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+                <ImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/durationTextView"
+                    android:layout_alignStart="@+id/walking_icon"
+                    android:layout_alignTop="@+id/durationTextView"
+                    app:srcCompat="@android:drawable/ic_lock_idle_alarm"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/arrow_icon"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/arrow_icon"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
