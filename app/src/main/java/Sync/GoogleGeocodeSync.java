@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.MessageFormat;
 
 import Sync.Info.LocationDTO;
@@ -74,9 +75,10 @@ public class GoogleGeocodeSync {
     }
     public LocationDTO getCoordinates(String address, String key){
         try {
+            String encodedAdd = URLEncoder.encode(address, "UTF-8");
             String googleUrl = MessageFormat.format(
                     "https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}",
-                    address, key);
+                    encodedAdd, key);
             URL url = null;
             url = new URL(googleUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -84,9 +86,9 @@ public class GoogleGeocodeSync {
             connection.setRequestMethod("GET");
 
             int responseCode = connection.getResponseCode();
-//            if(responseCode != 200){
-//                return null;
-//            }
+          if(responseCode != 200){
+                return null;
+           }
 
             BufferedReader input = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
