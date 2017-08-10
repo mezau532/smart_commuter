@@ -33,7 +33,7 @@ This app is written with JAVA and XML using Android Studio.
 * Platform: Android only; Language: en-US
 * Minimum SDK: Version 23         
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
-
+* open the project and go to app->java->config->configFile.java and set all the api keys, you will need a google, uber, lyft, and trimet api key
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
