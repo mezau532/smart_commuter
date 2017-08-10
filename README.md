@@ -39,7 +39,7 @@ How to use the features:
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
 * Find Ride: Enter address(OR check the current location checkbox) to check price and duration to your destination.
 * Nearby Stops lookup: Click the check box then click search, it will show you stops(if has) within 0.5 miles in you current location.
-* Maybe. (thinking to add: Real-time tracking GPS for your trimet trip)
+* Maybe: (thinking to add: Real-time tracking GPS for your trimet trip)
 
 ## References
 * The HttpHandler class is based on TutorialsPoint: https://www.tutorialspoint.com/android/android_json_parser.html
