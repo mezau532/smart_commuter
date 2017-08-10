@@ -28,12 +28,14 @@ The app is splited with few activities
 
 ## Build Instructions
 This app is written with JAVA and XML using Android Studio.
-* Build Prerequisites: Android Studio (You need to have a computer at least. XD ) <br />
+* Build Prerequisites: Android Studio
 * Build: Download needed packages when you are in the studio and Run the program
-* Platform: Android only; Language: en-US
-* Minimum SDK: Version 23         
+* Minimum SDK: Version 23  
+* Platform: Android only; Language: en-US       
 * Download: git clone https://github.com/mezau532/smart_commuter.git  OR Download the zip file from this site.
-* open the project and go to app->java->config->configFile.java and set all the api keys, you will need a google, uber, lyft, and trimet api key
+* Open the project and go to app->java->config->configFile.java and set all the api keys, you will need a google, uber, lyft, and trimet api key
+* Note: In computer, you need to send your location coordinate first before using the nearbylocation for the trimet and current_location in the uber/lyfy service
+
 ## User Manual
 How to use the features: 
 * StopID lookup: enter StopId and Click Search Button to see arrival time for the stop.
