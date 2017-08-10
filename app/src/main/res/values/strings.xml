@@ -9,11 +9,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string name="trimetApiKey">1D72A2E7E55A71C6646AD061E</string>
-    <string name="googleApiKey">AIzaSyA8IHKgx_3xnloVW5kH8shDwaw67Mu67Co</string>
-    <string name="liftApiKey">roVZU6oVJyhdGGoM/VFKhmyuTmOYvBalKiezPB5PiHiTqsB72/1chvNJ/Zdx/YgvDdKfKiOGSMNBLJbKaXVOyNfj/2cWqAbDzz9gfRh8pA9Av/n0YyUCHbs=</string>
-    <string name="uberApiKey">XtW6q7Yu7QSHxAfUhcAQTtbkVemZoHAH7XTeIDqi</string>
-
 
     <string name="enter_stop_id_here">Enter Stop ID here</string>
     <string name="current_direction">Current Direction</string>

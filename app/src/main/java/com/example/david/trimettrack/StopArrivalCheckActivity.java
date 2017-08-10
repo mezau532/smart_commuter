@@ -14,6 +14,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import config.configFile;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,10 +24,11 @@ import java.util.HashMap;
 public class StopArrivalCheckActivity extends AppCompatActivity {
 
     private String TAG = StopArrivalCheckActivity.class.getSimpleName();
+    private configFile config = new configFile();
 
     //Important data variable for API request
+    private String trimetApiKey = config.trimetApiKey;
     private String stopId;
-    private String trimetApiKey;
     private String url;
 
     //JSON Parser Variable
@@ -57,15 +60,6 @@ public class StopArrivalCheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stop_arrival_check);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-
-        //Get Trimet API Key
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = ai.metaData;
-            trimetApiKey = bundle.getString("trimetAppID");
-        } catch (Exception e) {
-            Log.e(TAG, "You need to configure the meta-data first.");
-        }
 
         //Initialize a new Array List to store arrival information for a specific stop ID
         stopInfoResultList = new ArrayList<>();

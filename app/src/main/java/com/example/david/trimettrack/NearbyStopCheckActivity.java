@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import config.configFile;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -21,12 +22,14 @@ import java.util.HashMap;
 public class NearbyStopCheckActivity extends AppCompatActivity {
 
     private String TAG = NearbyStopCheckActivity.class.getSimpleName();
+    private configFile config = new configFile();
 
     // Important data variable for API request
+    private String trimetApiKey = config.trimetApiKey;
     private String url;
     private String cur_lng;
     private String cur_lat;
-    private String appId;
+
     private String range = "800";  //meters
 
     // Data
@@ -40,15 +43,6 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_nearby_check);
 
-        // Get Trimet Api Key
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = ai.metaData;
-            appId = bundle.getString("trimetAppID");
-        } catch (Exception e) {
-            Log.e(TAG, "You need to configure the meta-data first.");
-        }
-
         // Find listView in which is going to display arrival information
         lv = (ListView) findViewById(R.id.nearbyStopListView);
 
@@ -59,7 +53,7 @@ public class NearbyStopCheckActivity extends AppCompatActivity {
             cur_lng = locationData.getString("current_longitude");
             // Define Request URL
             url = MessageFormat.format("https://developer.trimet.org/ws/V1/stops?ll" +
-                    "={0},{1}&meters={2}&appID={3}&json=true",cur_lat,cur_lng,range,appId);
+                    "={0},{1}&meters={2}&appID={3}&json=true",cur_lat,cur_lng,range, trimetApiKey);
 
             new GetNearbyStop().execute(url);
         }

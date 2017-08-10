@@ -10,6 +10,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import config.configFile;
+
 /**
  * Created by David on 8/3/2017.
  * This class is based on https://www.androidhive.info/2012/01/android-json-parsing-tutorial/ by RAVI TAMADA
@@ -19,7 +21,8 @@ import java.util.HashMap;
 public class NearbyStopJSONParser {
 
     private String TAG = "Nearby Stop JSON Parser";
-    private String googleApiKey = "AIzaSyD1bFc2-m-ReAA94qeBEHa9Rcnca5gjEFY";
+    private configFile config = new configFile();
+    private String googleApiKey = config.googleApiKey;
 
     //Variable
     private ArrayList<HashMap<String,String>> nearbyStopResultList;

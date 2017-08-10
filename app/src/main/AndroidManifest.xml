@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <meta-data
-            android:name="trimetAppID"
-            android:value="@string/trimetApiKey" />
 
         <activity
             android:name=".MainActivity">
