@@ -19,16 +19,18 @@ import Sync.Info.CostEstimateDTO;
 import Sync.Info.ListOfCostEstimateDtos;
 import Sync.Info.UberCostEstimateDTO;
 import Sync.Info.UberListOfCostEstimateDTOs;
+import config.configFile;
 
 /**
  * Created by umeza on 7/25/17.
  */
 
 public class UberSync {
+    private configFile Config = new configFile();
     private String baseUrl = "https://api.uber.com/v1.2/";
     private String results;
     private UberCostEstimateDTO[] costEstimates;
-    private String serverToken = "XtW6q7Yu7QSHxAfUhcAQTtbkVemZoHAH7XTeIDqi";
+    private String serverToken = Config.uberApiKey;
 
     public UberCostEstimateDTO[] getCostEstimates(double startLat, double startLng, double endLng, double endlat) {
         String url = MessageFormat.format(

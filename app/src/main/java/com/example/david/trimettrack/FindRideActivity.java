@@ -5,6 +5,7 @@ import Sync.Info.CostEstimateDTO;
 import Sync.Info.LocationDTO;
 import Sync.Info.LyftClientCredentials;
 import Sync.Info.UberCostEstimateDTO;
+import config.configFile;
 
 import android.Manifest;
 import android.content.Context;
@@ -35,6 +36,7 @@ import java.net.URL;
 import java.text.MessageFormat;
 
 public class FindRideActivity extends AppCompatActivity {
+    public configFile Config = new configFile();
     Location loc;
     private LocationManager locationManager;
     private LocationListener listener;
@@ -48,10 +50,10 @@ public class FindRideActivity extends AppCompatActivity {
     public static final String TAG = HttpHandler.class.getSimpleName();
     public UberCostEstimateDTO cheapestUber;
     CostEstimateDTO cheapestLyft;
-    private String serverToken = "XtW6q7Yu7QSHxAfUhcAQTtbkVemZoHAH7XTeIDqi";
+    public String serverToken = Config.uberApiKey;
     public String StartAddress;
     public String DestinationAddress;
-    public String GoogleApiKey = "AIzaSyA8IHKgx_3xnloVW5kH8shDwaw67Mu67Co";
+    public String GoogleApiKey = Config.googleApiKey;
     ProgressBar loading;
     TextView invalidInput;
 
@@ -212,7 +214,7 @@ public class FindRideActivity extends AppCompatActivity {
         private Context context;
         private Exception exeption;
         public String results;
-        public String ClientToken = "roVZU6oVJyhdGGoM/VFKhmyuTmOYvBalKiezPB5PiHiTqsB72/1chvNJ/Zdx/YgvDdKfKiOGSMNBLJbKaXVOyNfj/2cWqAbDzz9gfRh8pA9Av/n0YyUCHbs=";
+        public String ClientToken = Config.liftApiKey;
         public LyftClientCredentials Creds = new LyftClientCredentials();
 
         public String getResults() {
