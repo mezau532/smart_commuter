@@ -1,10 +1,15 @@
-package com.example.david.trimettrack;
-
 /**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ *
  * Created by David on 7/18/2017.
  * This class is based on tutorialspoint.com site.If you want to know more detail, please visit
  * https://www.tutorialspoint.com/android/android_json_parser.html.
  */
+
+package com.example.david.trimettrack;
+
 
 import android.util.Log;
 

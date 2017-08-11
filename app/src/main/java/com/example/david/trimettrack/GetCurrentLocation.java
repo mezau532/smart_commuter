@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ *
+ * Created by David on 8/1/2017.
+ * This class is based on a post "Android GPS, Location Manager Tutorial" by RAVI TAMADA.
+ * More detail on https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
+ */
+
 package com.example.david.trimettrack;
 
 import android.app.Service;
@@ -11,11 +21,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
-/**
- * Created by David on 8/1/2017.
- * This class is based on a post "Android GPS, Location Manager Tutorial" by RAVI TAMADA.
- * More detail on https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
- */
+
 
 
 public class GetCurrentLocation extends Service implements LocationListener{

@@ -1,8 +1,12 @@
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ */
+
 package com.example.david.trimettrack;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

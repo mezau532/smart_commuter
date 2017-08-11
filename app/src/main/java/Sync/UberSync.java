@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ */
+
 package Sync;
 
 import com.google.gson.GsonBuilder;
@@ -20,10 +26,6 @@ import Sync.Info.ListOfCostEstimateDtos;
 import Sync.Info.UberCostEstimateDTO;
 import Sync.Info.UberListOfCostEstimateDTOs;
 import config.configFile;
-
-/**
- * Created by umeza on 7/25/17.
- */
 
 public class UberSync {
     private configFile Config = new configFile();

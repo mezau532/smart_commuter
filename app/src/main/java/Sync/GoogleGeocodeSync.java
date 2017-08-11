@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ */
+
 package Sync;
 
 import com.google.gson.Gson;
@@ -18,10 +24,6 @@ import java.net.URLEncoder;
 import java.text.MessageFormat;
 
 import Sync.Info.LocationDTO;
-
-/**
- * Created by umeza on 7/20/17.
- */
 
 public class GoogleGeocodeSync {
     private LocationDTO location;
