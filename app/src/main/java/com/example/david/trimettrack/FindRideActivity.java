@@ -71,7 +71,9 @@ public class FindRideActivity extends AppCompatActivity {
         loading.setVisibility(View.INVISIBLE);
         invalidInput = (TextView) findViewById(R.id.InvalidInput);
         invalidInput.setVisibility(View.INVISIBLE);
-
+        /* location listener implementation based on "Android GPS, Location Manager Tutorial" by RAVI TAMADA.
+        * More detail on https://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
+        */
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
 
