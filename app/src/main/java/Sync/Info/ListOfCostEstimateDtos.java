@@ -1,15 +1,14 @@
-/**
- * Copyright (c) 2017 Ulysses Meza and Jinghui Han
- * This code is available under the "MIT License".
- * Please see the file LICENSE in this distribution for license terms
- */
 package Sync.Info;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ */
 /**
  * Created by umeza on 7/20/17.
  */
