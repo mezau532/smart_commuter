@@ -1,5 +1,9 @@
 package Sync.Info;
-
+/**
+ * Copyright (c) 2017 Ulysses Meza and Jinghui Han
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms
+ */
 /**
  * Created by umeza on 7/18/17.
  */
